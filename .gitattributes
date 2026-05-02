@@ -1,0 +1,30 @@
+# Normalize line endings across all platforms
+* text=auto
+
+# Python files — always LF
+*.py text eol=lf
+
+# Shell scripts — always LF
+*.sh text eol=lf
+
+# HTML/CSS/JS — always LF
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+# Data files — always LF
+*.json text eol=lf
+*.csv text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.env text eol=lf
+
+# Binary files — no line ending conversion
+*.pdf binary
+*.pkl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

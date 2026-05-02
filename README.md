@@ -187,14 +187,23 @@ Boston_Parking/
 
 ### 1. Create virtual environment
 ```bash
+# Mac/Linux
 cd /path/to/Boston_Parking
 python3 -m venv venv
 source venv/bin/activate
+
+# Windows
+cd \path\to\Boston_Parking
+python -m venv venv
+venv\Scripts\activate
 ```
 
 ### 2. Install dependencies
 ```bash
 pip install -r requirements.txt
+
+# Windows only — if ChromaDB errors on SQLite:
+pip install pysqlite3-binary
 ```
 
 ### 3. Configure environment
@@ -259,8 +268,14 @@ python3 api/main.py
 
 ### Step 7 — Open the frontend
 ```bash
+# Mac/Linux
 cd frontend
 python3 -m http.server 3000
+
+# Windows
+cd frontend
+python -m http.server 3000
+
 # Open http://localhost:3000 in your browser
 ```
 
@@ -386,6 +401,26 @@ Hours: Monday–Friday, 8:30 a.m. to 4:30 p.m.
 
 ---
 
+## Windows Compatibility
+
+This project is cross-platform. The Python code uses `pathlib.Path` throughout so file paths work correctly on Windows, Mac, and Linux. A few things to note when running on Windows:
+
+| Item | Mac/Linux | Windows |
+|---|---|---|
+| Activate venv | `source venv/bin/activate` | `venv\Scripts\activate` |
+| Python command | `python3` | `python` |
+| Run scripts | `python3 script.py` | `python script.py` |
+| Local server | `python3 -m http.server 3000` | `python -m http.server 3000` |
+
+**ChromaDB on Windows** — if you get a SQLite-related error when building the vector index, install:
+```bash
+pip install pysqlite3-binary
+```
+
+**Line endings** — a `.gitattributes` file is included in the repo to normalize line endings across platforms. This prevents CRLF/LF conflicts when collaborating between Windows and Mac/Linux machines.
+
+---
+
 ## Using a Different Model Provider
 
 By default this project uses the OpenAI API. Swapping to a different provider (Anthropic, Google, Ollama, etc.) requires changes in four files beyond `config/settings.py`.
@@ -449,4 +484,4 @@ If you want to run fully locally with no API costs:
 3. For embeddings use `sentence-transformers` locally (see step 3 above)
 4. Update `MODEL_NANO` and `MODEL_MINI` in `config/settings.py` to your Ollama model name
 
-> **Note:** Local models will produce lower quality regulatory synthesis than GPT-5.4 mini. For a regulatory accuracy-critical use case, a hosted model is strongly recommended.
+> **Note:** Local models will produce lower quality regulatory synthesis than GPT-5.4 mini. For a regulatory accuracy-critical use case, a frontier model is strongly recommended.
