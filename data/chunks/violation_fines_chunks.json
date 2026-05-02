@@ -1,0 +1,778 @@
+[
+  {
+    "id": "violation_000",
+    "text": "Boston parking violation: HP-DV Parking Only. The fine is $120. If unpaid after 21 days, a late penalty of $40 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "HP-DV Parking Only",
+      "fine_amount": "$120",
+      "late_penalty": "$40",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_001",
+    "text": "Boston parking violation: Bike or Bus Lane. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Bike or Bus Lane",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_002",
+    "text": "Boston parking violation: Bus Stop or Stand. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Bus Stop or Stand",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_003",
+    "text": "Boston parking violation: Fenway Event Parking. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Fenway Event Parking",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_004",
+    "text": "Boston parking violation: Handicap Ramp. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Handicap Ramp",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_005",
+    "text": "Boston parking violation: Hydrant. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Hydrant",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_006",
+    "text": "Boston parking violation: No Valid Resident Parking Permit/Sticker. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Valid Resident Parking Permit/Sticker",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_007",
+    "text": "Boston parking violation: Overnight Heavy Vehicle in Residential Area (12,000 lbs. GVW). The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Overnight Heavy Vehicle in Residential Area (12,000 lbs. GVW)",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_008",
+    "text": "Boston parking violation: Pedestrian Zone. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Pedestrian Zone",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_009",
+    "text": "Boston parking violation: Within a Fire Lane. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Within a Fire Lane",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_010",
+    "text": "Boston parking violation: Loading Zone. The fine is $90. If unpaid after 21 days, a late penalty of $18 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Loading Zone",
+      "fine_amount": "$90",
+      "late_penalty": "$18",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_011",
+    "text": "Boston parking violation: No Parking (Zone A). The fine is $90. If unpaid after 21 days, a late penalty of $18 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Parking (Zone A)",
+      "fine_amount": "$90",
+      "late_penalty": "$18",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_012",
+    "text": "Boston parking violation: No Stopping or Standing. The fine is $90. If unpaid after 21 days, a late penalty of $25 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Stopping or Standing",
+      "fine_amount": "$90",
+      "late_penalty": "$25",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_013",
+    "text": "Boston parking violation: Overnight Street Cleaning (no tow). The fine is $90. If unpaid after 21 days, a late penalty of $30 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Overnight Street Cleaning (no tow)",
+      "fine_amount": "$90",
+      "late_penalty": "$30",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_014",
+    "text": "Boston parking violation: Street Cleaning (Charlestown). The fine is $90. If unpaid after 21 days, a late penalty of $30 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Street Cleaning (Charlestown)",
+      "fine_amount": "$90",
+      "late_penalty": "$30",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_015",
+    "text": "Boston parking violation: Upon any Crosswalk. The fine is $85. If unpaid after 21 days, a late penalty of $28 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Upon any Crosswalk",
+      "fine_amount": "$85",
+      "late_penalty": "$28",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_016",
+    "text": "Boston parking violation: No Overnight Commercial Vehicles. The fine is $65. If unpaid after 21 days, a late penalty of $21 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Overnight Commercial Vehicles",
+      "fine_amount": "$65",
+      "late_penalty": "$21",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_017",
+    "text": "Boston parking violation: Upon any Sidewalk. The fine is $65. If unpaid after 21 days, a late penalty of $21 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Upon any Sidewalk",
+      "fine_amount": "$65",
+      "late_penalty": "$21",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_018",
+    "text": "Boston parking violation: Resident Permit Only. The fine is $60. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Resident Permit Only",
+      "fine_amount": "$60",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_019",
+    "text": "Boston parking violation: Double Parking (Zone A). The fine is $55. If unpaid after 21 days, a late penalty of $15 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Double Parking (Zone A)",
+      "fine_amount": "$55",
+      "late_penalty": "$15",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_020",
+    "text": "Boston parking violation: No Parking (Zone B). The fine is $55. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Parking (Zone B)",
+      "fine_amount": "$55",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_021",
+    "text": "Boston parking violation: Taxi Stand. The fine is $50. If unpaid after 21 days, a late penalty of $16 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Taxi Stand",
+      "fine_amount": "$50",
+      "late_penalty": "$16",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_022",
+    "text": "Boston parking violation: Weather Emergency. The fine is $45. If unpaid after 21 days, a late penalty of $15 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Weather Emergency",
+      "fine_amount": "$45",
+      "late_penalty": "$15",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_023",
+    "text": "Boston parking violation: No Valid/Expired Registration Plate. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Valid/Expired Registration Plate",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_024",
+    "text": "Boston parking violation: Island/Center Strip/Street Car Reservation. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Island/Center Strip/Street Car Reservation",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_025",
+    "text": "Boston parking violation: Meter Fee Unpaid. The fine is $40. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Meter Fee Unpaid",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_026",
+    "text": "Boston parking violation: No Valid Certificate of Inspection (Mass Vehicles Only. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Valid Certificate of Inspection (Mass Vehicles Only",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_027",
+    "text": "Boston parking violation: No Valid/Expired Registration Plate. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "No Valid/Expired Registration Plate",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_028",
+    "text": "Boston parking violation: Over Meter Limit. The fine is $40. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Over Meter Limit",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_029",
+    "text": "Boston parking violation: Over Posted Limit. The fine is $40. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Over Posted Limit",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_030",
+    "text": "Boston parking violation: Street Cleaning. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Street Cleaning",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_031",
+    "text": "Boston parking violation: Within 20 feet of an Intersection. The fine is $40. If unpaid after 21 days, a late penalty of $13 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Within 20 feet of an Intersection",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_032",
+    "text": "Boston parking violation: Double Parking (Zone B). The fine is $35. If unpaid after 21 days, a late penalty of $10 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Double Parking (Zone B)",
+      "fine_amount": "$35",
+      "late_penalty": "$10",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_033",
+    "text": "Boston parking violation: Over 1 Foot from Curb. The fine is $35. If unpaid after 21 days, a late penalty of $11 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Over 1 Foot from Curb",
+      "fine_amount": "$35",
+      "late_penalty": "$11",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_034",
+    "text": "Boston parking violation: Driveway. The fine is $25. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Driveway",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_035",
+    "text": "Boston parking violation: Meter Violation (\"Out of Order\"). The fine is $25. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Meter Violation (\"Out of Order\")",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_036",
+    "text": "Boston parking violation: Not in Metered Space. The fine is $25. If unpaid after 21 days, a late penalty of $8 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Not in Metered Space",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_037",
+    "text": "Boston parking violation: Angle Parking Only. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Angle Parking Only",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_038",
+    "text": "Boston parking violation: Angle Parking Prohibited. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Angle Parking Prohibited",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_039",
+    "text": "Boston parking violation: Electrical Vehicles Only. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Electrical Vehicles Only",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_040",
+    "text": "Boston parking violation: Electrical Vehicle Over Posted Limit. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Electrical Vehicle Over Posted Limit",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_041",
+    "text": "Boston parking violation: Electric Vehicle Not Actively Charging. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Electric Vehicle Not Actively Charging",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_042",
+    "text": "Boston parking violation: Wrong Direction. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Wrong Direction",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_043",
+    "text": "Boston parking violation: All Others. The fine is $15. If unpaid after 21 days, a late penalty of $5 is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "All Others",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_044",
+    "text": "Boston parking violation: Code. The fine is Description. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Code",
+      "fine_amount": "Description",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_045",
+    "text": "Boston parking violation: 2 DR. The fine is Two-door passenger car. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "2 DR",
+      "fine_amount": "Two-door passenger car",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_046",
+    "text": "Boston parking violation: 4 DR. The fine is Four-door passenger car. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "4 DR",
+      "fine_amount": "Four-door passenger car",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_047",
+    "text": "Boston parking violation: SW. The fine is Station Wagon. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "SW",
+      "fine_amount": "Station Wagon",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_048",
+    "text": "Boston parking violation: CONV. The fine is Convertible. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "CONV",
+      "fine_amount": "Convertible",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_049",
+    "text": "Boston parking violation: VAN. The fine is Van. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "VAN",
+      "fine_amount": "Van",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_050",
+    "text": "Boston parking violation: PU. The fine is Pickup Truck. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "PU",
+      "fine_amount": "Pickup Truck",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_051",
+    "text": "Boston parking violation: TK. The fine is Truck larger than a van or a pickup. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "TK",
+      "fine_amount": "Truck larger than a van or a pickup",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_052",
+    "text": "Boston parking violation: Code. The fine is Color. If unpaid after 21 days, a late penalty of Color also includes is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Code",
+      "fine_amount": "Color",
+      "late_penalty": "Color also includes",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_053",
+    "text": "Boston parking violation: 1. The fine is Black. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "1",
+      "fine_amount": "Black",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_054",
+    "text": "Boston parking violation: 2. The fine is Blue. If unpaid after 21 days, a late penalty of Turquoise, Aqua is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "2",
+      "fine_amount": "Blue",
+      "late_penalty": "Turquoise, Aqua",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_055",
+    "text": "Boston parking violation: 3. The fine is Brown. If unpaid after 21 days, a late penalty of Tan, Beige, Gold, Rust is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "3",
+      "fine_amount": "Brown",
+      "late_penalty": "Tan, Beige, Gold, Rust",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_056",
+    "text": "Boston parking violation: 4. The fine is Red. If unpaid after 21 days, a late penalty of Orange, Pink, Burgundy, Wine, Maroon is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "4",
+      "fine_amount": "Red",
+      "late_penalty": "Orange, Pink, Burgundy, Wine, Maroon",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_057",
+    "text": "Boston parking violation: 5. The fine is Yellow. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "5",
+      "fine_amount": "Yellow",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_058",
+    "text": "Boston parking violation: 6. The fine is Green. If unpaid after 21 days, a late penalty of Lime, Olive is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "6",
+      "fine_amount": "Green",
+      "late_penalty": "Lime, Olive",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_059",
+    "text": "Boston parking violation: 7. The fine is White. If unpaid after 21 days, a late penalty of Off-white, Ivory is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "7",
+      "fine_amount": "White",
+      "late_penalty": "Off-white, Ivory",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_060",
+    "text": "Boston parking violation: 8. The fine is Grey. If unpaid after 21 days, a late penalty of Silver is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "8",
+      "fine_amount": "Grey",
+      "late_penalty": "Silver",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_061",
+    "text": "Boston parking violation: 9. The fine is Purple. If unpaid after 21 days, a late penalty of  is added.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "9",
+      "fine_amount": "Purple",
+      "late_penalty": "",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_summary",
+    "text": "Boston parking tickets become overdue 21 days after issuance. If unpaid within 21 days, a late penalty fee is added to the original fine. Violations range from $15 (minor infractions) to $120 (handicap-only spaces). The most expensive violations include parking in handicap-designated spaces ($120), bike or bus lanes ($100), bus stops ($100), near fire hydrants ($100), and within fire lanes ($100). Street cleaning violations are $40 daytime or $90 overnight.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "summary",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_pedestrian_zone",
+    "text": "Boston parking violation: Parking in a Pedestrian Zone. The fine is $100. If unpaid after 21 days, a late penalty of $33 is added. Pedestrian zones are designated areas where vehicle parking is prohibited to protect pedestrian safety and access.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "Pedestrian Zone",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  },
+  {
+    "id": "violation_zone_comparison",
+    "text": "Boston parking Zone A vs Zone B fine comparison: Zone A is the downtown core of Boston bounded by the Charles River, Boston University Bridge, Commonwealth Avenue, St. Mary's Street, and Huntington Avenue. Zone B covers the rest of the city outside Zone A. Zone A fines are generally higher than Zone B fines. No Parking Zone A: $90 fine, $18 late penalty. No Parking Zone B: $55 fine, $8 late penalty. Double Parking Zone A: $55 fine, $15 late penalty. Double Parking Zone B: $35 fine, $10 late penalty. Resident Permit Only: $60 fine, $13 late penalty.",
+    "metadata": {
+      "domain": "violations",
+      "violation_type": "zone_comparison",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+      "source_name": "Boston Parking Ticket Fines and Codes"
+    }
+  }
+]

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boston Parking Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Variables ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0a1628;
+      --navy-mid:  #112240;
+      --navy-light:#1a3358;
+      --gold:      #c9a84c;
+      --gold-light:#e2c46e;
+      --white:     #f4f1eb;
+      --white-dim: #b8b0a0;
+      --red:       #c0392b;
+      --border:    rgba(201,168,76,0.18);
+      --grid-color:rgba(201,168,76,0.04);
+      --shadow:    0 8px 40px rgba(0,0,0,0.4);
+      --radius:    3px;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Crimson Pro', Georgia, serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    /* ── Grid Background ───────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ────────────────────────────────────────────────────── */
+    .app {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: 100vh;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ────────────────────────────────────────────────────── */
+    header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .seal {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy-mid);
+      animation: sealPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0); }
+    }
+
+    .seal svg { width: 28px; height: 28px; }
+
+    .header-text { flex: 1; }
+
+    .header-eyebrow {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .header-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-head);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--white-dim);
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2ecc71;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* ── Messages ──────────────────────────────────────────────────── */
+    .messages {
+      overflow-y: auto;
+      padding: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--navy-light) transparent;
+    }
+
+    .messages::-webkit-scrollbar { width: 4px; }
+    .messages::-webkit-scrollbar-track { background: transparent; }
+    .messages::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 2px; }
+
+    /* Welcome state */
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      gap: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .welcome-icon {
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy-mid);
+    }
+
+    .welcome-icon svg { width: 36px; height: 36px; opacity: 0.7; }
+
+    .welcome h2 {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .welcome p {
+      font-size: 16px;
+      color: var(--white-dim);
+      max-width: 420px;
+      font-style: italic;
+    }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      max-width: 560px;
+    }
+
+    .suggestion {
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .suggestion:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+
+    /* Message bubbles */
+    .message {
+      display: flex;
+      gap: 12px;
+      animation: fadeUp 0.3s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user { flex-direction: row-reverse; }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .avatar.bot {
+      background: var(--navy-mid);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .avatar.user-av {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .bubble {
+      max-width: 72%;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .message.bot .bubble {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      color: var(--white);
+      border-top-left-radius: 0;
+    }
+
+    .message.user .bubble {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 400;
+      border-top-right-radius: 0;
+    }
+
+    .bubble strong { font-weight: 600; }
+
+    .bubble ul {
+      margin: 8px 0 4px 16px;
+    }
+
+    .bubble ul li { margin-bottom: 4px; }
+
+    /* Sources */
+    .sources {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .source-tag {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    a.source-tag:hover {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Typing indicator */
+    .typing {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 18px;
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      border-top-left-radius: 0;
+      width: fit-content;
+    }
+
+    .typing span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.4;
+      animation: typingDot 1.2s ease-in-out infinite;
+    }
+
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingDot {
+      0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
+      30%            { opacity: 1;   transform: translateY(-4px); }
+    }
+
+    /* Error */
+    .error-bubble {
+      padding: 12px 16px;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.3);
+      border-radius: var(--radius);
+      color: #e57373;
+      font-size: 14px;
+      font-family: var(--font-head);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Input Area ────────────────────────────────────────────────── */
+    .input-area {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    textarea {
+      flex: 1;
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 13px 16px;
+      resize: none;
+      min-height: 50px;
+      max-height: 140px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea::placeholder { color: var(--white-dim); font-style: italic; }
+    textarea:focus { border-color: rgba(201,168,76,0.5); }
+
+    .send-btn {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      background: var(--gold);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .send-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .send-btn:active { transform: translateY(0); }
+    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .send-btn svg { width: 18px; height: 18px; color: var(--navy); }
+
+    .input-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .input-hint {
+      font-family: var(--font-head);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      opacity: 0.5;
+    }
+
+    .model-badge {
+      font-family: var(--font-head);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    /* ── Divider ───────────────────────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white-dim);
+      font-family: var(--font-head);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin: 4px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .app { padding: 0 16px; }
+      h1 { font-size: 20px; }
+      .seal { width: 40px; height: 40px; }
+      .bubble { max-width: 88%; font-size: 15px; }
+      .suggestions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div class="seal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <path d="M2 12h20"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <div class="header-eyebrow">City of Boston · Transportation Department</div>
+      <h1>Parking Assistant</h1>
+    </div>
+    <div class="header-status">
+      <div class="status-dot"></div>
+      Live
+    </div>
+  </header>
+
+  <!-- Messages -->
+  <div class="messages" id="messages">
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <h2>How can I help you park in Boston?</h2>
+      <p>Ask about fines, street cleaning schedules, resident permits, and parking regulations.</p>
+      <div class="suggestions">
+        <button class="suggestion" onclick="useSuggestion(this)">Hydrant fine</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Street cleaning season</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Get a resident permit</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Double parking Zone A</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Does street cleaning happen on holidays?</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Overnight heavy vehicle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <div class="input-row">
+      <textarea
+        id="input"
+        placeholder="Ask about Boston parking rules, fines, or permits…"
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="input-meta">
+      <span class="input-hint">Enter to send · Shift+Enter for new line</span>
+      <span class="model-badge" id="modelBadge">GPT-5.4</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const API_URL = 'http://localhost:8000/chat';
+  const messagesEl = document.getElementById('messages');
+  const inputEl = document.getElementById('input');
+  const sendBtn = document.getElementById('sendBtn');
+  const modelBadge = document.getElementById('modelBadge');
+
+  let conversationHistory = [];
+  let isLoading = false;
+
+  // ── Auto-resize textarea ──────────────────────────────────────────
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+  }
+
+  // ── Handle enter key ──────────────────────────────────────────────
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  // ── Use suggestion ────────────────────────────────────────────────
+  function useSuggestion(btn) {
+    const text = btn.textContent.trim();
+    inputEl.value = text;
+    autoResize(inputEl);
+    inputEl.focus();
+    sendMessage();
+  }
+
+  // ── Hide welcome ──────────────────────────────────────────────────
+  function hideWelcome() {
+    const welcome = document.getElementById('welcome');
+    if (welcome) welcome.remove();
+  }
+
+  // ── Scroll to bottom ──────────────────────────────────────────────
+  function scrollToBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  // ── Add divider ───────────────────────────────────────────────────
+  function addDivider(label) {
+    const d = document.createElement('div');
+    d.className = 'divider';
+    d.textContent = label;
+    messagesEl.appendChild(d);
+  }
+
+  // ── Add message ───────────────────────────────────────────────────
+  function addMessage(role, text, sources = [], model = '') {
+    const wrap = document.createElement('div');
+    wrap.className = `message ${role}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = `avatar ${role === 'bot' ? 'bot' : 'user-av'}`;
+    avatar.textContent = role === 'bot' ? 'BTD' : 'YOU';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = formatText(text);
+
+    if (sources && sources.length > 0) {
+      const srcDiv = document.createElement('div');
+      srcDiv.className = 'sources';
+      sources.forEach(s => {
+        const sourceUrls = {
+          'Boston Parking Ticket Fines and Codes': 'https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes',
+          'Boston Resident Parking Permit Guide': 'https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit',
+          'Boston Street Cleaning Rules': 'https://www.boston.gov/departments/public-works/street-sweeping-city',
+          'Analyze Boston Street Sweeping Schedules': 'https://data.boston.gov/dataset/street-sweeping-schedules',
+          'City of Boston Traffic Rules and Regulations (March 2025)': 'https://www.boston.gov/departments/transportation/city-boston-traffic-rules-and-regulations',
+        };
+        const url = sourceUrls[s];
+        const tag = url
+          ? Object.assign(document.createElement('a'), { className: 'source-tag', textContent: s, href: url, target: '_blank', rel: 'noopener noreferrer' })
+          : Object.assign(document.createElement('span'), { className: 'source-tag', textContent: s });
+        srcDiv.appendChild(tag);
+      });
+      bubble.appendChild(srcDiv);
+    }
+
+    wrap.appendChild(avatar);
+    wrap.appendChild(bubble);
+    messagesEl.appendChild(wrap);
+
+    if (model) {
+      const modelName = model.includes('nano') ? 'GPT-5.4 Nano'
+                      : model.includes('mini') ? 'GPT-5.4 Mini'
+                      : 'GPT-5.4';
+      modelBadge.textContent = modelName;
+    }
+
+    scrollToBottom();
+    return wrap;
+  }
+
+  // ── Format text ───────────────────────────────────────────────────
+  function formatText(text) {
+    // Bold **text**
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Bullet points
+    const lines = text.split('\n');
+    let html = '';
+    let inList = false;
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += `<li>${trimmed.slice(2)}</li>`;
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        if (trimmed) html += `<p style="margin-bottom:6px">${trimmed}</p>`;
+      }
+    }
+    if (inList) html += '</ul>';
+    return html;
+  }
+
+  // ── Add typing indicator ──────────────────────────────────────────
+  function addTyping() {
+    const wrap = document.createElement('div');
+    wrap.className = 'message bot';
+    wrap.id = 'typing';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar bot';
+    avatar.textContent = 'BTD';
+
+    const typing = document.createElement('div');
+    typing.className = 'typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    wrap.appendChild(avatar);
+    wrap.appendChild(typing);
+    messagesEl.appendChild(wrap);
+    scrollToBottom();
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typing');
+    if (t) t.remove();
+  }
+
+  // ── Send message ──────────────────────────────────────────────────
+  async function sendMessage() {
+    const query = inputEl.value.trim();
+    if (!query || isLoading) return;
+
+    hideWelcome();
+    isLoading = true;
+    sendBtn.disabled = true;
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+
+    // Add user message
+    addMessage('user', query);
+    conversationHistory.push({ role: 'user', content: query });
+
+    // Add typing indicator
+    addTyping();
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query,
+          conversation_history: conversationHistory.slice(-6),
+          top_k: 5,
+        }),
+      });
+
+      removeTyping();
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.detail || `Server error ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      addMessage('bot', data.answer, data.sources, data.model_used);
+      conversationHistory.push({ role: 'assistant', content: data.answer });
+
+      // Keep history manageable
+      if (conversationHistory.length > 12) {
+        conversationHistory = conversationHistory.slice(-12);
+      }
+
+    } catch (err) {
+      removeTyping();
+      const wrap = document.createElement('div');
+      wrap.className = 'message bot';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'avatar bot';
+      avatar.textContent = 'BTD';
+
+      const errBubble = document.createElement('div');
+      errBubble.className = 'error-bubble';
+      errBubble.textContent = err.message.includes('Failed to fetch')
+        ? 'Unable to connect to the server. Make sure the API is running on port 8000.'
+        : `Error: ${err.message}`;
+
+      wrap.appendChild(avatar);
+      wrap.appendChild(errBubble);
+      messagesEl.appendChild(wrap);
+      scrollToBottom();
+    }
+
+    isLoading = false;
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+</script>
+
+</body>
+</html>

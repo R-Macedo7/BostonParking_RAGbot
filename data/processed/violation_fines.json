@@ -1,0 +1,682 @@
+{
+  "violations": [
+    {
+      "violation": "HP-DV Parking Only",
+      "fine_amount": "$120",
+      "late_penalty": "$40",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Bike or Bus Lane",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Bus Stop or Stand",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Fenway Event Parking",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Handicap Ramp",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Hydrant",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Valid Resident Parking Permit/Sticker",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Overnight Heavy Vehicle in Residential Area (12,000 lbs. GVW)",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Pedestrian Zone",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Within a Fire Lane",
+      "fine_amount": "$100",
+      "late_penalty": "$33",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Loading Zone",
+      "fine_amount": "$90",
+      "late_penalty": "$18",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Parking (Zone A)",
+      "fine_amount": "$90",
+      "late_penalty": "$18",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Stopping or Standing",
+      "fine_amount": "$90",
+      "late_penalty": "$25",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Overnight Street Cleaning (no tow)",
+      "fine_amount": "$90",
+      "late_penalty": "$30",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Street Cleaning (Charlestown)",
+      "fine_amount": "$90",
+      "late_penalty": "$30",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Upon any Crosswalk",
+      "fine_amount": "$85",
+      "late_penalty": "$28",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Overnight Commercial Vehicles",
+      "fine_amount": "$65",
+      "late_penalty": "$21",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Upon any Sidewalk",
+      "fine_amount": "$65",
+      "late_penalty": "$21",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Resident Permit Only",
+      "fine_amount": "$60",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Double Parking (Zone A)",
+      "fine_amount": "$55",
+      "late_penalty": "$15",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Parking (Zone B)",
+      "fine_amount": "$55",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Taxi Stand",
+      "fine_amount": "$50",
+      "late_penalty": "$16",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Weather Emergency",
+      "fine_amount": "$45",
+      "late_penalty": "$15",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Valid/Expired Registration Plate",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Island/Center Strip/Street Car Reservation",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Meter Fee Unpaid",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Valid Certificate of Inspection (Mass Vehicles Only",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "No Valid/Expired Registration Plate",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Over Meter Limit",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Over Posted Limit",
+      "fine_amount": "$40",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Street Cleaning",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Within 20 feet of an Intersection",
+      "fine_amount": "$40",
+      "late_penalty": "$13",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Double Parking (Zone B)",
+      "fine_amount": "$35",
+      "late_penalty": "$10",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Over 1 Foot from Curb",
+      "fine_amount": "$35",
+      "late_penalty": "$11",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Driveway",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Meter Violation (\"Out of Order\")",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Not in Metered Space",
+      "fine_amount": "$25",
+      "late_penalty": "$8",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Angle Parking Only",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Angle Parking Prohibited",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Electrical Vehicles Only",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Electrical Vehicle Over Posted Limit",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Electric Vehicle Not Actively Charging",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Wrong Direction",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "All Others",
+      "fine_amount": "$15",
+      "late_penalty": "$5",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Code",
+      "fine_amount": "Description",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "2 DR",
+      "fine_amount": "Two-door passenger car",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "4 DR",
+      "fine_amount": "Four-door passenger car",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "SW",
+      "fine_amount": "Station Wagon",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "CONV",
+      "fine_amount": "Convertible",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "VAN",
+      "fine_amount": "Van",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "PU",
+      "fine_amount": "Pickup Truck",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "TK",
+      "fine_amount": "Truck larger than a van or a pickup",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "Code",
+      "fine_amount": "Color",
+      "late_penalty": "Color also includes",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "1",
+      "fine_amount": "Black",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "2",
+      "fine_amount": "Blue",
+      "late_penalty": "Turquoise, Aqua",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "3",
+      "fine_amount": "Brown",
+      "late_penalty": "Tan, Beige, Gold, Rust",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "4",
+      "fine_amount": "Red",
+      "late_penalty": "Orange, Pink, Burgundy, Wine, Maroon",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "5",
+      "fine_amount": "Yellow",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "6",
+      "fine_amount": "Green",
+      "late_penalty": "Lime, Olive",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "7",
+      "fine_amount": "White",
+      "late_penalty": "Off-white, Ivory",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "8",
+      "fine_amount": "Grey",
+      "late_penalty": "Silver",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "violation": "9",
+      "fine_amount": "Purple",
+      "late_penalty": "",
+      "domain": "violations",
+      "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    }
+  ],
+  "vehicle_codes": [
+    {
+      "code": "HP-DV Parking Only",
+      "description": "$120"
+    },
+    {
+      "code": "Bike or Bus Lane",
+      "description": "$100"
+    },
+    {
+      "code": "Bus Stop or Stand",
+      "description": "$100"
+    },
+    {
+      "code": "Fenway Event Parking",
+      "description": "$100"
+    },
+    {
+      "code": "Handicap Ramp",
+      "description": "$100"
+    },
+    {
+      "code": "Hydrant",
+      "description": "$100"
+    },
+    {
+      "code": "No Valid Resident Parking Permit/Sticker",
+      "description": "$100"
+    },
+    {
+      "code": "Overnight Heavy Vehicle in Residential Area (12,000 lbs. GVW)",
+      "description": "$100"
+    },
+    {
+      "code": "Pedestrian Zone",
+      "description": "$100"
+    },
+    {
+      "code": "Within a Fire Lane",
+      "description": "$100"
+    },
+    {
+      "code": "Loading Zone",
+      "description": "$90"
+    },
+    {
+      "code": "No Parking (Zone A)",
+      "description": "$90"
+    },
+    {
+      "code": "No Stopping or Standing",
+      "description": "$90"
+    },
+    {
+      "code": "Overnight Street Cleaning (no tow)",
+      "description": "$90"
+    },
+    {
+      "code": "Street Cleaning (Charlestown)",
+      "description": "$90"
+    },
+    {
+      "code": "Upon any Crosswalk",
+      "description": "$85"
+    },
+    {
+      "code": "No Overnight Commercial Vehicles",
+      "description": "$65"
+    },
+    {
+      "code": "Upon any Sidewalk",
+      "description": "$65"
+    },
+    {
+      "code": "Resident Permit Only",
+      "description": "$60"
+    },
+    {
+      "code": "Double Parking (Zone A)",
+      "description": "$55"
+    },
+    {
+      "code": "No Parking (Zone B)",
+      "description": "$55"
+    },
+    {
+      "code": "Taxi Stand",
+      "description": "$50"
+    },
+    {
+      "code": "Weather Emergency",
+      "description": "$45"
+    },
+    {
+      "code": "No Valid/Expired Registration Plate",
+      "description": "$40"
+    },
+    {
+      "code": "Island/Center Strip/Street Car Reservation",
+      "description": "$40"
+    },
+    {
+      "code": "Meter Fee Unpaid",
+      "description": "$40"
+    },
+    {
+      "code": "No Valid Certificate of Inspection (Mass Vehicles Only",
+      "description": "$40"
+    },
+    {
+      "code": "No Valid/Expired Registration Plate",
+      "description": "$40"
+    },
+    {
+      "code": "Over Meter Limit",
+      "description": "$40"
+    },
+    {
+      "code": "Over Posted Limit",
+      "description": "$40"
+    },
+    {
+      "code": "Street Cleaning",
+      "description": "$40"
+    },
+    {
+      "code": "Within 20 feet of an Intersection",
+      "description": "$40"
+    },
+    {
+      "code": "Double Parking (Zone B)",
+      "description": "$35"
+    },
+    {
+      "code": "Over 1 Foot from Curb",
+      "description": "$35"
+    },
+    {
+      "code": "Driveway",
+      "description": "$25"
+    },
+    {
+      "code": "Meter Violation (\"Out of Order\")",
+      "description": "$25"
+    },
+    {
+      "code": "Not in Metered Space",
+      "description": "$25"
+    },
+    {
+      "code": "Angle Parking Only",
+      "description": "$15"
+    },
+    {
+      "code": "Angle Parking Prohibited",
+      "description": "$15"
+    },
+    {
+      "code": "Electrical Vehicles Only",
+      "description": "$15"
+    },
+    {
+      "code": "Electrical Vehicle Over Posted Limit",
+      "description": "$15"
+    },
+    {
+      "code": "Electric Vehicle Not Actively Charging",
+      "description": "$15"
+    },
+    {
+      "code": "Wrong Direction",
+      "description": "$15"
+    },
+    {
+      "code": "All Others",
+      "description": "$15"
+    },
+    {
+      "code": "2 DR",
+      "description": "Two-door passenger car"
+    },
+    {
+      "code": "4 DR",
+      "description": "Four-door passenger car"
+    },
+    {
+      "code": "SW",
+      "description": "Station Wagon"
+    },
+    {
+      "code": "CONV",
+      "description": "Convertible"
+    },
+    {
+      "code": "VAN",
+      "description": "Van"
+    },
+    {
+      "code": "PU",
+      "description": "Pickup Truck"
+    },
+    {
+      "code": "TK",
+      "description": "Truck larger than a van or a pickup"
+    },
+    {
+      "code": "1",
+      "description": "Black"
+    },
+    {
+      "code": "2",
+      "description": "Blue"
+    },
+    {
+      "code": "3",
+      "description": "Brown"
+    },
+    {
+      "code": "4",
+      "description": "Red"
+    },
+    {
+      "code": "5",
+      "description": "Yellow"
+    },
+    {
+      "code": "6",
+      "description": "Green"
+    },
+    {
+      "code": "7",
+      "description": "White"
+    },
+    {
+      "code": "8",
+      "description": "Grey"
+    },
+    {
+      "code": "9",
+      "description": "Purple"
+    }
+  ],
+  "source": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes",
+  "domain": "violations"
+}

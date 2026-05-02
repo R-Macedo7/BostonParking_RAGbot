@@ -1,0 +1,1162 @@
+{
+  "passed": 73,
+  "total": 74,
+  "pass_rate": 0.9864864864864865,
+  "avg_score": 0.9932432432432432,
+  "nano_calls": 43,
+  "mini_calls": 31,
+  "total_tokens": 167084,
+  "results": [
+    {
+      "id": "v001",
+      "query": "What is the fine for parking near a fire hydrant in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.63,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 568,
+      "hits": [
+        "$100",
+        "hydrant",
+        "$33"
+      ],
+      "misses": [],
+      "answer_preview": "Parking near a fire hydrant in Boston has a base fine of $100. If it\u2019s unpaid after 21 days, a late penalty of $33 is added."
+    },
+    {
+      "id": "v002",
+      "query": "How much is a double parking ticket in Zone A?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.32,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 616,
+      "hits": [
+        "$55",
+        "zone a",
+        "$15"
+      ],
+      "misses": [],
+      "answer_preview": "A double parking ticket in Zone A has a base fine of $55. If it\u2019s unpaid after 21 days, a late penalty of $15 is added."
+    },
+    {
+      "id": "v003",
+      "query": "What happens if I don't pay my Boston parking ticket within 21 days?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.72,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1269,
+      "hits": [
+        "21 days",
+        "late penalty"
+      ],
+      "misses": [],
+      "answer_preview": "If you don\u2019t pay a Boston parking ticket within 21 days, it becomes overdue and a late penalty fee is added to the original fine. The amount of the late penalty depends on the violation. For example, within 20 feet of an intersection is a $40 fine plus a $13 late penalty, within a fire lane is a $10"
+    },
+    {
+      "id": "v004",
+      "query": "What is the fine for parking in a bike lane or bus lane?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.13,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 583,
+      "hits": [
+        "$100",
+        "$33"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in a bike lane or bus lane has a $100 fine. If it\u2019s unpaid after 21 days, a $33 late penalty is added."
+    },
+    {
+      "id": "v005",
+      "query": "How much is a street cleaning ticket in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1302,
+      "hits": [
+        "$40",
+        "$90",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "Boston street cleaning tickets are $40 for daytime street cleaning and $90 for overnight street cleaning. Charlestown daytime street cleaning tickets are also $90. If unpaid after 21 days, the late penalty is $30. For street cleaning, always verify against the posted street signs, since they overrid"
+    },
+    {
+      "id": "v006",
+      "query": "What is the fine for parking in a handicap-designated space in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.14,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 587,
+      "hits": [
+        "$120",
+        "$40"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in a handicap-designated space in Boston has a fine of $120. If it\u2019s unpaid after 21 days, a late penalty of $40 is added."
+    },
+    {
+      "id": "v007",
+      "query": "How much is the fine for parking at a bus stop in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 584,
+      "hits": [
+        "$100",
+        "$33"
+      ],
+      "misses": [],
+      "answer_preview": "Parking at a bus stop in Boston has a fine of $100. If it\u2019s unpaid after 21 days, a late penalty of $33 is added."
+    },
+    {
+      "id": "v008",
+      "query": "What is the fine for parking in a loading zone in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.22,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 613,
+      "hits": [
+        "$90",
+        "$18"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in a loading zone in Boston has a $90 fine. If it\u2019s unpaid after 21 days, an additional $18 late penalty is added."
+    },
+    {
+      "id": "v009",
+      "query": "How much is a ticket for parking on a crosswalk in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.74,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 523,
+      "hits": [
+        "$85",
+        "$28"
+      ],
+      "misses": [],
+      "answer_preview": "A Boston ticket for parking on a crosswalk has a base fine of $85. If it\u2019s unpaid after 21 days, a late penalty of $28 is added."
+    },
+    {
+      "id": "v010",
+      "query": "What is the fine for parking on a sidewalk in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.17,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 512,
+      "hits": [
+        "$65",
+        "$21"
+      ],
+      "misses": [],
+      "answer_preview": "Parking on a sidewalk in Boston has a base fine of $65. If it\u2019s unpaid after 21 days, a late penalty of $21 is added."
+    },
+    {
+      "id": "v011",
+      "query": "How much is a double parking ticket in Zone B?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.2,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 616,
+      "hits": [
+        "$35",
+        "zone b",
+        "$10"
+      ],
+      "misses": [],
+      "answer_preview": "A double parking ticket in Zone B has a base fine of $35. If it\u2019s unpaid after 21 days, a late penalty of $10 is added."
+    },
+    {
+      "id": "v012",
+      "query": "What is the fine for parking more than one foot from the curb?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.31,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 5175,
+      "hits": [
+        "$35",
+        "$11"
+      ],
+      "misses": [],
+      "answer_preview": "Parking more than one foot from the curb is a $35 fine if paid within 21 days. If it remains unpaid after 21 days, a late penalty of $11 is added."
+    },
+    {
+      "id": "v013",
+      "query": "How much is the fine for blocking a driveway in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.64,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 7595,
+      "hits": [
+        "$25",
+        "$8"
+      ],
+      "misses": [],
+      "answer_preview": "Blocking a driveway in Boston is a $25 fine if paid within 21 days, with an $8 late penalty if unpaid after 21 days. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "v014",
+      "query": "What is the fine for parking in an electric vehicle only spot without an EV?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.53,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 12286,
+      "hits": [
+        "$15",
+        "$5"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in an electric vehicle charging space without an EV is a $15 fine if paid within 21 days, with a $5 late penalty if unpaid after 21 days. The context also says \u201cElectrical Vehicles Only\u201d is $15 with a $5 late penalty. Please verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "v015",
+      "query": "What is the fine for parking the wrong direction on a street in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.37,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 7471,
+      "hits": [
+        "$15",
+        "$5"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in the wrong direction of travel in Boston has a $15 base fine. If it is unpaid after 21 days, a $5 late penalty is added.\n\nVerify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "v016",
+      "query": "How much is the fine for an unpaid parking meter in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.16,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 504,
+      "hits": [
+        "$40",
+        "$8"
+      ],
+      "misses": [],
+      "answer_preview": "For an unpaid parking meter in Boston (\u201cMeter Fee Unpaid\u201d), the fine is $40. If it\u2019s unpaid after 21 days, a late penalty of $8 is added."
+    },
+    {
+      "id": "v017",
+      "query": "What is the fine for parking within 20 feet of an intersection in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.19,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 11615,
+      "hits": [
+        "$40",
+        "$13"
+      ],
+      "misses": [],
+      "answer_preview": "The fine for parking within 20 feet of an intersection in Boston is $40 if paid within 21 days. If it remains unpaid after 21 days, a late penalty of $13 is added.\n\nVerify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "v018",
+      "query": "What is the fine for parking in a fire lane in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.09,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 615,
+      "hits": [
+        "$100",
+        "$33"
+      ],
+      "misses": [],
+      "answer_preview": "Parking in a fire lane in Boston has a fine of $100. If it\u2019s unpaid after 21 days, a late penalty of $33 is added."
+    },
+    {
+      "id": "v019",
+      "query": "How much is a No Parking Zone A ticket in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 5318,
+      "hits": [
+        "$90",
+        "$18"
+      ],
+      "misses": [],
+      "answer_preview": "A No Parking Zone A ticket in Boston is $90, and if it remains unpaid after 21 days, an $18 late penalty is added.\n\nVerify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "v020",
+      "query": "What is the fine for parking during a weather emergency in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.02,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 2443,
+      "hits": [
+        "$45",
+        "$15"
+      ],
+      "misses": [],
+      "answer_preview": "The fine for a Boston weather emergency parking violation is $45, and if it is unpaid after 21 days, a $15 late penalty is added.\n\nVerify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "p001",
+      "query": "How do I get a Boston resident parking permit?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.76,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1049,
+      "hits": [
+        "online",
+        "city hall",
+        "registration"
+      ],
+      "misses": [],
+      "answer_preview": "To get a Boston resident parking permit, you must meet the eligibility requirements and then apply either online (with some limits) or in person.\n\nEligibility requirements\n- Your vehicle registration must show the car is registered and principally garaged in your name at your current Boston address."
+    },
+    {
+      "id": "p002",
+      "query": "How long does it take to get a resident parking permit in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 755,
+      "hits": [
+        "10 business days",
+        "online"
+      ],
+      "misses": [],
+      "answer_preview": "Online approvals for a Boston resident parking permit take approximately 10 business days to receive the permit by mail."
+    },
+    {
+      "id": "p003",
+      "query": "Can I get my Boston parking permit the same day?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.84,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 801,
+      "hits": [
+        "in person",
+        "city hall"
+      ],
+      "misses": [],
+      "answer_preview": "Yes. If you apply in person at Boston City Hall (1 City Hall Square, Room 224) Monday through Friday, 9 a.m. to 4:30 p.m., and you have all required documents, you receive your permit the same day."
+    },
+    {
+      "id": "p004",
+      "query": "When should I renew my Boston parking permit?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.95,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 611,
+      "hits": [
+        "four to six weeks",
+        "expires"
+      ],
+      "misses": [],
+      "answer_preview": "You should renew your Boston resident parking permit four to six weeks before it expires. Also, you can\u2019t renew online if your permit has already expired, and you must pay any overdue parking tickets before renewing."
+    },
+    {
+      "id": "p005",
+      "query": "What documents do I need to apply for a Boston resident parking permit?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.84,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 969,
+      "hits": [
+        "registration",
+        "boston address"
+      ],
+      "misses": [],
+      "answer_preview": "To apply for a Boston resident parking permit, you need:\n\n- A copy of your rental agreement (if you\u2019re applying in person)\n- Proof of your Boston residency (the proof must show the same name and Boston address as on your rental agreement)\n- A valid Massachusetts car registration showing the car is r"
+    },
+    {
+      "id": "p006",
+      "query": "Where is the Boston Parking Clerk office located?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1365,
+      "hits": [
+        "city hall",
+        "room 224",
+        "1 city hall square"
+      ],
+      "misses": [],
+      "answer_preview": "The Boston Parking Clerk office is at City Hall, 1 City Hall Square, Room 224, Boston, MA 02201. The office hours listed are Monday through Friday, 8:30 a.m. to 4:30 p.m. in one section, and Monday through Friday, 9 a.m. to 4:30 p.m. in another section. If you\u2019re going for a resident parking permit,"
+    },
+    {
+      "id": "p007",
+      "query": "What are the hours of the Boston Parking Clerk office?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1431,
+      "hits": [
+        "monday",
+        "friday",
+        "4:30"
+      ],
+      "misses": [],
+      "answer_preview": "The Boston Parking Clerk office at City Hall, 1 City Hall Square, Room 224, is open Monday through Friday from 8:30 a.m. to 4:30 p.m. One source also lists the office hours as 9 a.m. to 4:30 p.m., so if you\u2019re going in person, it\u2019s best to confirm the exact window before you go."
+    },
+    {
+      "id": "p008",
+      "query": "Can I use my resident parking permit on a different car?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.27,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 810,
+      "hits": [
+        "specific vehicle",
+        "license plate"
+      ],
+      "misses": [],
+      "answer_preview": "No. Your resident parking permit is issued to a specific vehicle and license plate, and it\u2019s only valid for the neighborhood where you live. You can\u2019t use your sticker on another vehicle or a new car. If you get a new car, you have to replace your permit."
+    },
+    {
+      "id": "p009",
+      "query": "What happens if I move to a new neighborhood in Boston \u2014 do I need a new permit?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.39,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1941,
+      "hits": [
+        "neighborhood",
+        "new"
+      ],
+      "misses": [],
+      "answer_preview": "Yes. Your resident parking permit is only valid for the neighborhood where you live, so if you move to a new Boston neighborhood you need a new permit. The permit is also tied to your specific vehicle and license plate, so a change of address or vehicle/plate number requires a new Resident Parking S"
+    },
+    {
+      "id": "p010",
+      "query": "Can I apply for a Boston parking permit online on weekends?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.15,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 764,
+      "hits": [
+        "weekend"
+      ],
+      "misses": [],
+      "answer_preview": "No. The context says you can\u2019t use the online system on weekends."
+    },
+    {
+      "id": "p011",
+      "query": "How do I get a rental car parking permit in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 4.49,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1125,
+      "hits": [
+        "rental",
+        "30 days",
+        "rental contract"
+      ],
+      "misses": [],
+      "answer_preview": "To get a Boston resident parking rental permit:\n\n- Rental permit limits and timing\n  - Boston only issues rental car permits for a maximum of 30 days.\n  - You can\u2019t use the online system on weekends.\n  - If you pick up your rental after 3 p.m., you must wait until the next business day to apply onli"
+    },
+    {
+      "id": "p012",
+      "query": "What is the BC Stadium Walkshed Permit?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.74,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1535,
+      "hits": [
+        "boston college",
+        "allston",
+        "football"
+      ],
+      "misses": [],
+      "answer_preview": "The BC Stadium Walkshed Permit is a Boston resident parking permit for Allston/Brighton residents that lets them park during Boston College football home games when parking restrictions are enforced. Vehicles must display either a BC Stadium Walkshed Permit or a valid Allston/Brighton Resident Parki"
+    },
+    {
+      "id": "p013",
+      "query": "How do I apply for a replacement resident parking permit in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.84,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 821,
+      "hits": [
+        "replace",
+        "online",
+        "reason"
+      ],
+      "misses": [],
+      "answer_preview": "To apply for a replacement resident parking permit in Boston:\n\n- Apply online: Go to boston.gov/parkingpermits and submit the replacement application.\n- In the application, include the reason for the replacement (examples given include new vehicle, new license plates, moved neighborhoods, or a broke"
+    },
+    {
+      "id": "sc001",
+      "query": "Does street cleaning happen when it rains in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.59,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1363,
+      "hits": [
+        "rain",
+        "not canceled"
+      ],
+      "misses": [],
+      "answer_preview": "Yes. Street cleaning is not canceled for light rain in Boston, so you still need to move your car if your street is scheduled for cleaning. Daytime street cleaning runs April 1 to November 30 in most neighborhoods, and March 1 to December 31 in the North End, South End, and Beacon Hill. Overnight st"
+    },
+    {
+      "id": "sc002",
+      "query": "When does Boston street cleaning season start and end?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.58,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1261,
+      "hits": [
+        "april 1",
+        "november 30"
+      ],
+      "misses": [],
+      "answer_preview": "In most Boston neighborhoods, daytime street cleaning season runs from April 1 to November 30. In the North End, South End, and Beacon Hill, it runs from March 1 to December 31.\n\nOvernight street cleaning runs year-round from 12:01 AM to 7:00 AM, and that schedule is not suspended on holidays. Alway"
+    },
+    {
+      "id": "sc003",
+      "query": "How much is an overnight street cleaning ticket in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.24,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 5016,
+      "hits": [
+        "$90",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "An overnight street cleaning ticket in Boston is $90. If it is unpaid after 21 days, a $30 late penalty is added.\n\nOvernight street cleaning runs from 12:01 AM to 7:00 AM. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "sc004",
+      "query": "Does street cleaning happen on holidays in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.63,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1975,
+      "hits": [
+        "holiday",
+        "daytime",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "On city holidays, daytime street cleaning is suspended, so you do not need to move your car for daytime sweeping on those days. However, overnight street cleaning (12:01 AM to 7:00 AM) is NOT suspended on holidays and continues as normal.\n\nBoston city holidays listed in the context include: New Year"
+    },
+    {
+      "id": "sc005",
+      "query": "What are the street cleaning hours for overnight tickets in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.64,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1503,
+      "hits": [
+        "12:01 am",
+        "7:00 am"
+      ],
+      "misses": [],
+      "answer_preview": "Overnight street cleaning tickets apply for parking restrictions from 12:01 AM to 7:00 AM. Overnight street cleaning is not suspended on city holidays (daytime is suspended, but overnight continues as normal)."
+    },
+    {
+      "id": "sc006",
+      "query": "How much is a street cleaning ticket in Charlestown?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1748,
+      "hits": [
+        "$90",
+        "charlestown"
+      ],
+      "misses": [],
+      "answer_preview": "A street cleaning ticket in Charlestown costs $90. If it\u2019s unpaid after 21 days, a $30 late penalty is added. For Sixth St in Charlestown, street cleaning is Thursday from 8:00 AM to 12:00 PM on the 1st and 3rd weeks of the month on the odd side, and the 2nd and 4th weeks on the even side, from Apri"
+    },
+    {
+      "id": "sc007",
+      "query": "When does street cleaning run in the North End of Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.84,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1294,
+      "hits": [
+        "north end",
+        "march",
+        "december"
+      ],
+      "misses": [],
+      "answer_preview": "In the North End, the Daytime Street Cleaning Program runs from March 1 to December 31 (instead of the standard April 1 to November 30). Always obey the posted street sign \u2014 it overrides online schedules if there is a conflict. For street cleaning questions, verify against posted street signs."
+    },
+    {
+      "id": "sc008",
+      "query": "When does street cleaning run in Beacon Hill?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1346,
+      "hits": [
+        "beacon hill",
+        "march",
+        "december"
+      ],
+      "misses": [],
+      "answer_preview": "In Beacon Hill, the street cleaning program runs year-round for the listed Beacon Hill street segments (including the specific \u201cNo parking\u201d windows shown for Beacon St and Park St). For daytime street cleaning on other Beacon Hill streets shown in the context (like River St and Beaver St), the progr"
+    },
+    {
+      "id": "sc009",
+      "query": "Does street cleaning happen on the 5th week of the month?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.46,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1501,
+      "hits": [
+        "5th week",
+        "every week"
+      ],
+      "misses": [],
+      "answer_preview": "Yes\u2014if your street is cleaned every week, it is also cleaned on the 5th week of the month. If your street is cleaned every other week, the 5th week is NOT enforced.\n\nFor example, in Beacon Hill:\n- MT VERNON: Monday, 8:00 AM to 12:00 PM on the 1st, 3rd, and 5th weeks\n- WALNUT: Friday, 8:00 AM to 12:0"
+    },
+    {
+      "id": "sc010",
+      "query": "If my street is cleaned every other week does street cleaning happen on the 5th week?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.34,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1437,
+      "hits": [
+        "5th week",
+        "not enforced"
+      ],
+      "misses": [],
+      "answer_preview": "No. If a street is cleaned every other week, the 5th week is not enforced. If it is cleaned every week, it is also cleaned on the 5th week of the month. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "sc011",
+      "query": "What overrides the online street cleaning schedule in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.42,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1093,
+      "hits": [
+        "posted street sign",
+        "overrides"
+      ],
+      "misses": [],
+      "answer_preview": "The posted street sign overrides the online street cleaning schedule if there is any conflict. Always follow the sign on the street. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "sc012",
+      "query": "Does Boston cancel overnight street cleaning on holidays?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1120,
+      "hits": [
+        "overnight",
+        "not suspended",
+        "holiday"
+      ],
+      "misses": [],
+      "answer_preview": "No. On official city holidays, daytime street cleaning is suspended, but overnight street cleaning is NOT suspended and continues as normal from 12:01 AM to 7:00 AM. Always verify against the posted street signs for the authoritative schedule."
+    },
+    {
+      "id": "sc013",
+      "query": "Is street cleaning suspended on Thanksgiving in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.43,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1915,
+      "hits": [
+        "thanksgiving",
+        "daytime",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "On Thanksgiving, daytime street cleaning is suspended (you do not need to move your car for daytime sweeping). However, overnight street cleaning still runs as normal from 12:01 AM to 7:00 AM. Always verify against the posted street signs for the exact street/side rules."
+    },
+    {
+      "id": "sc014",
+      "query": "When does street cleaning run in the South End of Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.66,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1281,
+      "hits": [
+        "south end",
+        "march",
+        "december"
+      ],
+      "misses": [],
+      "answer_preview": "In Boston\u2019s South End, the Daytime Street Cleaning Program runs from March 1 to December 31 (extended season for the South End, one month earlier in spring and one month later in fall). Street cleaning is not canceled for light rain, and on city holidays daytime sweeping is suspended (overnight swee"
+    },
+    {
+      "id": "sc015",
+      "query": "How much is a daytime street cleaning ticket in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 820,
+      "hits": [
+        "$40",
+        "daytime"
+      ],
+      "misses": [],
+      "answer_preview": "A daytime street cleaning ticket in Boston is $40 in most neighborhoods. In Charlestown, daytime street cleaning tickets cost $90. If unpaid after 21 days, a late penalty is added. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "r001",
+      "query": "Can commercial vehicles park overnight in residential areas in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.46,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 3531,
+      "hits": [
+        "overnight",
+        "commercial",
+        "12,000",
+        "prohibit"
+      ],
+      "misses": [],
+      "answer_preview": "No\u2014commercial vehicles are not allowed to park overnight in Boston residential areas if they are \u201cheavy vehicles\u201d (gross vehicle weight over 12,000 pounds).\n\nThe rule prohibits parking or standing any motor vehicle with a gross vehicle weight in excess of 12,000 pounds between 9:00 PM and 8:00 AM on"
+    },
+    {
+      "id": "r002",
+      "query": "What is the fine for an overnight heavy vehicle violation in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 526,
+      "hits": [
+        "$100",
+        "$33",
+        "12,000"
+      ],
+      "misses": [],
+      "answer_preview": "For an \u201cOvernight Heavy Vehicle in Residential Area (12,000 lbs. GVW)\u201d violation in Boston, the fine is $100. If it\u2019s unpaid after 21 days, a late penalty of $33 is added."
+    },
+    {
+      "id": "r003",
+      "query": "What are the general parking prohibitions in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.56,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 2588,
+      "hits": [
+        "stop",
+        "stand",
+        "park",
+        "prohibit"
+      ],
+      "misses": [],
+      "answer_preview": "Boston\u2019s general parking prohibitions in the provided regulations include these:\n\nNo operator shall stop, stand, or park any vehicle at a curb adjacent to the reservation side of a parkway, or at the entrances of a school, church, theater, hotel, hospital, railroad station, railway station, public b"
+    },
+    {
+      "id": "r004",
+      "query": "What is required for posting temporary no parking signs in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.66,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 2427,
+      "hits": [
+        "temporary",
+        "sign",
+        "construction"
+      ],
+      "misses": [],
+      "answer_preview": "Temporary \u201cno parking\u201d signs in Boston (for construction or special events) must be posted as follows:\n\n- All signs must conform to Boston Transportation Department (BTD) specifications, and must show the effective date and the estimated completion date of the project/event.\n- Signs must be installe"
+    },
+    {
+      "id": "r005",
+      "query": "Can you park within 20 feet of an intersection in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 897,
+      "hits": [
+        "20 feet",
+        "intersection"
+      ],
+      "misses": [],
+      "answer_preview": "No. Boston parking rules list parking within 20 feet of an intersection as a violation. The fine is $40, and if it is unpaid after 21 days, a $13 late penalty is added. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "r006",
+      "query": "What happens to vehicles that are illegally parked and immobilized in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 3.28,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 2279,
+      "hits": [
+        "immobilization",
+        "five",
+        "parking violation"
+      ],
+      "misses": [],
+      "answer_preview": "If a vehicle is illegally parked and the City immobilizes it (for example, after multiple unpaid parking violation notices), the following applies based on the provided rules:\n\n- When immobilization/removal can happen: If the registered owner has failed to appear for five (5) or more parking violati"
+    },
+    {
+      "id": "r007",
+      "query": "Are there special parking rules near the State House in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.66,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 1722,
+      "hits": [
+        "general court",
+        "parking",
+        "streets"
+      ],
+      "misses": [],
+      "answer_preview": "Yes. The City\u2019s rules state that the general prohibitions/restrictions on parking or standing on public ways do not apply (so far as they relate to the listed streets/parts) to vehicles owned or used by members and officers of the General Court.\n\nThe specific streets/parts covered are:\n- Mount Verno"
+    },
+    {
+      "id": "r008",
+      "query": "What are the rules for angle parking in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.15,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 10607,
+      "hits": [
+        "angle",
+        "curb",
+        "roadway"
+      ],
+      "misses": [],
+      "answer_preview": "Where parking is not otherwise prohibited, Boston rules require angle parking to be done with the vehicle positioned at an angle to the curb/edge of the roadway, with the right front wheel to the curb/edge of the roadway.\n\nException for one-way streets: on the left side of one-way roadways, the vehi"
+    },
+    {
+      "id": "r009",
+      "query": "Can you park in a pedestrian zone in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.43,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1171,
+      "hits": [
+        "pedestrian",
+        "$100"
+      ],
+      "misses": [],
+      "answer_preview": "No. Parking in a pedestrian zone is prohibited because pedestrian zones are designated areas where vehicle parking is not allowed to protect pedestrian safety and access. The fine is $100, and if it is unpaid after 21 days, a $33 late penalty is added."
+    },
+    {
+      "id": "r010",
+      "query": "What are the open air parking space rules in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 4.3,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 9335,
+      "hits": [
+        "open-air",
+        "license"
+      ],
+      "misses": [],
+      "answer_preview": "Boston\u2019s open-air parking space rules (City of Boston Traffic Rules and Regulations, Article XIII) require that any business \u201cconducting or maintaining an open-air parking space\u201d in Boston be licensed by the Commissioner of Transportation (under M.G.L. c. 148 \u00a7 56), and that the licensee follow the "
+    },
+    {
+      "id": "edge001",
+      "query": "What is the difference between a Zone A and Zone B no parking fine?",
+      "score": 0.5,
+      "passed": false,
+      "elapsed_seconds": 1.75,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 771,
+      "hits": [
+        "zone a",
+        "zone b"
+      ],
+      "misses": [
+        "$90",
+        "$55"
+      ],
+      "answer_preview": "The provided context does not include any information about \u201cZone A\u201d vs \u201cZone B\u201d no parking fines, or any fine amounts/late penalties for those zones. It only covers Boston resident parking permit eligibility and how to apply.\n\nIf you share the specific section of the regulations that mentions Zone "
+    },
+    {
+      "id": "edge002",
+      "query": "Is the fine for parking at a Fenway event the same as a hydrant violation?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.74,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 543,
+      "hits": [
+        "$100",
+        "fenway",
+        "hydrant"
+      ],
+      "misses": [],
+      "answer_preview": "No. Based on the provided context:\n\n- Fenway Event Parking: fine $100; late penalty of $33 if unpaid after 21 days.\n- Hydrant violation: fine $100; late penalty of $33 if unpaid after 21 days.\n\nSo the base fine and late penalty are the same ($100 and $33), even though they are different violation ty"
+    },
+    {
+      "id": "edge003",
+      "query": "What is the late penalty for an overnight street cleaning ticket?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 490,
+      "hits": [
+        "$30",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "For an overnight street cleaning ticket, the base fine is $90, and if it\u2019s unpaid after 21 days, a late penalty of $30 is added."
+    },
+    {
+      "id": "edge004",
+      "query": "What is the late penalty for a loading zone violation?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.02,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 582,
+      "hits": [
+        "$18",
+        "loading zone"
+      ],
+      "misses": [],
+      "answer_preview": "For a Loading Zone parking violation, the base fine is $90. If it\u2019s unpaid after 21 days, a late penalty of $18 is added."
+    },
+    {
+      "id": "edge005",
+      "query": "Is street cleaning year round in Boston or only seasonal?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.74,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 2020,
+      "hits": [
+        "april 1",
+        "november 30",
+        "march",
+        "december"
+      ],
+      "misses": [],
+      "answer_preview": "Street cleaning in Boston is seasonal, not year-round. In most neighborhoods, the Daytime Street Cleaning Program runs from April 1 to November 30. The North End, South End, and Beacon Hill run longer, from March 1 to December 31. Charlestown follows the same seasonal schedule, but daytime street cl"
+    },
+    {
+      "id": "edge006",
+      "query": "Can I renew my Boston parking permit online if it has already expired?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 693,
+      "hits": [
+        "expired",
+        "online"
+      ],
+      "misses": [],
+      "answer_preview": "No. You cannot renew online if your permit has already expired. You must renew within the normal renewal window (four to six weeks before expiration), and you must pay any overdue parking tickets before renewing your permit."
+    },
+    {
+      "id": "edge007",
+      "query": "What is the fine for an electric vehicle parked in an EV spot but not actively charging?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 12279,
+      "hits": [
+        "$15",
+        "$5",
+        "charging"
+      ],
+      "misses": [],
+      "answer_preview": "The fine is $15 if paid within 21 days, with a $5 late penalty if unpaid after 21 days. This applies to an electric vehicle parked in an EV charging space if it is not actively charging. Verify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "edge008",
+      "query": "What is the fine for parking in a taxi stand in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.33,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 4408,
+      "hits": [
+        "$50",
+        "$16",
+        "taxi"
+      ],
+      "misses": [],
+      "answer_preview": "The fine for parking in a taxi stand in Boston is $50 if paid within 21 days. If it remains unpaid after 21 days, a late penalty of $16 is added.\n\nVerify against posted street signs for street cleaning questions."
+    },
+    {
+      "id": "oos001",
+      "query": "What are the parking rules in Cambridge MA?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.42,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1793,
+      "hits": [
+        "boston",
+        "cambridge"
+      ],
+      "misses": [],
+      "answer_preview": "The provided context is only for Boston parking regulations, not Cambridge MA. It does not contain Cambridge parking rules, so I can\u2019t answer that from the materials given.\n\nIf you want, I can help with the Boston rules in the context instead."
+    },
+    {
+      "id": "oos002",
+      "query": "How do I contest a parking ticket in court in Boston?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.66,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1902,
+      "hits": [
+        "hearing",
+        "parking clerk",
+        "room 224"
+      ],
+      "misses": [],
+      "answer_preview": "To contest a Boston parking ticket, you request an administrative hearing with the Office of the Parking Clerk. You can do this in person at Room 224, Boston City Hall, by telephone, by email, or by mailing a written request to City of Boston, P.O. Box 1626, Boston, Massachusetts 02105.\n\nYour reques"
+    },
+    {
+      "id": "oos003",
+      "query": "Where can I find parking garages near Fenway Park?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.29,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1387,
+      "hits": [
+        "garage",
+        "parking"
+      ],
+      "misses": [],
+      "answer_preview": "The provided context does not include any information about parking garages near Fenway Park. It only covers a Fenway event parking ticket fine and some street cleaning schedules. Please check local parking maps or garage listings for nearby garages. Verify against posted street signs for street cle"
+    },
+    {
+      "id": "multi001",
+      "query": "What is the fine for street cleaning and when does the season run?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.11,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1877,
+      "hits": [
+        "$40",
+        "$90",
+        "april 1",
+        "november 30"
+      ],
+      "misses": [],
+      "answer_preview": "Daytime street cleaning tickets cost $40, and overnight street cleaning tickets cost $90. In Charlestown, daytime street cleaning tickets cost $90 instead of $40.\n\nThe season runs April 1 to November 30 in most Boston neighborhoods. The North End, South End, and Beacon Hill run an extended season fr"
+    },
+    {
+      "id": "multi002",
+      "query": "How much is a hydrant ticket and what happens if I don't pay it?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.23,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 585,
+      "hits": [
+        "$100",
+        "$33",
+        "21 days",
+        "late"
+      ],
+      "misses": [],
+      "answer_preview": "A hydrant parking ticket has a $100 fine. If you don\u2019t pay it within 21 days, a late penalty of $33 is added."
+    },
+    {
+      "id": "multi003",
+      "query": "How do I get a resident parking permit and how long does it take?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 2.77,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 910,
+      "hits": [
+        "online",
+        "city hall",
+        "10 business days"
+      ],
+      "misses": [],
+      "answer_preview": "To get a Boston resident parking permit:\n\n1) Make sure you meet the requirements\n- Your vehicle registration must show the car is registered and principally garaged in your name at your current Boston address.\n- You must provide valid proof of Boston residency.\n\n2) Apply (two options)\n- Online: If y"
+    },
+    {
+      "id": "multi004",
+      "query": "Does street cleaning happen on Labor Day and if I get a ticket how much is it?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.74,
+      "model_used": "gpt-5.4-mini-2026-03-17",
+      "tokens_used": 1628,
+      "hits": [
+        "labor day",
+        "daytime",
+        "overnight"
+      ],
+      "misses": [],
+      "answer_preview": "On Labor Day, daytime street cleaning is suspended because it is an official city holiday, so you do not need to move your car for daytime sweeping. Overnight street cleaning from 12:01 AM to 7:00 AM still continues as normal.\n\nIf you do get a street cleaning ticket, the fine depends on the type:\n- "
+    },
+    {
+      "id": "multi005",
+      "query": "What is the difference between Zone A and Zone B double parking fines and which is more expensive?",
+      "score": 1.0,
+      "passed": true,
+      "elapsed_seconds": 1.54,
+      "model_used": "gpt-5.4-nano-2026-03-17",
+      "tokens_used": 688,
+      "hits": [
+        "zone a",
+        "zone b",
+        "$55",
+        "$35"
+      ],
+      "misses": [],
+      "answer_preview": "Double parking fines differ by zone:\n\n- Zone A double parking: $55 base fine, $15 late penalty (after 21 days if unpaid).\n- Zone B double parking: $35 base fine, $10 late penalty (after 21 days if unpaid).\n\nDifference:\n- Base fine difference: $55 \u2212 $35 = $20 more in Zone A.\n- Late penalty difference"
+    }
+  ]
+}

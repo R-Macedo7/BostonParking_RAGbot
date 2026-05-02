@@ -1,0 +1,143 @@
+{
+  "recall_at_k": 1.0,
+  "mrr": 0.9666666666666667,
+  "top_k": 5,
+  "total_queries": 15,
+  "results": [
+    {
+      "id": "v001",
+      "query": "What is the fine for parking near a fire hydrant in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v002",
+      "query": "How much is a double parking ticket in Zone A?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v003",
+      "query": "What happens if I don't pay my Boston parking ticket within 21 days?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v004",
+      "query": "What is the fine for parking in a bike lane or bus lane?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v005",
+      "query": "How much is a street cleaning ticket in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p001",
+      "query": "How do I get a Boston resident parking permit?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p002",
+      "query": "How long does it take to get a resident parking permit in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p003",
+      "query": "Can I get my Boston parking permit the same day?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p004",
+      "query": "When should I renew my Boston parking permit?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc001",
+      "query": "Does street cleaning happen when it rains in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc002",
+      "query": "When does Boston street cleaning season start and end?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc003",
+      "query": "How much is an overnight street cleaning ticket in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc004",
+      "query": "Does street cleaning happen on holidays in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "street_cleaning",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r001",
+      "query": "Can commercial vehicles park overnight in residential areas in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "regulations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "multi001",
+      "query": "What is the fine for street cleaning and when does the season run?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    }
+  ]
+}

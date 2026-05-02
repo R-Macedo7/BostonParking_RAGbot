@@ -1,0 +1,446 @@
+[
+    {
+      "id": "v001",
+      "domain": "violations",
+      "query": "What is the fine for parking near a fire hydrant in Boston?",
+      "expected_contains": ["$100", "hydrant", "$33"]
+    },
+    {
+      "id": "v002",
+      "domain": "violations",
+      "query": "How much is a double parking ticket in Zone A?",
+      "expected_contains": ["$55", "Zone A", "$15"]
+    },
+    {
+      "id": "v003",
+      "domain": "violations",
+      "query": "What happens if I don't pay my Boston parking ticket within 21 days?",
+      "expected_contains": ["21 days", "late penalty"]
+    },
+    {
+      "id": "v004",
+      "domain": "violations",
+      "query": "What is the fine for parking in a bike lane or bus lane?",
+      "expected_contains": ["$100", "$33"]
+    },
+    {
+      "id": "v005",
+      "domain": "violations",
+      "query": "How much is a street cleaning ticket in Boston?",
+      "expected_contains": ["$40", "$90", "overnight"]
+    },
+    {
+      "id": "v006",
+      "domain": "violations",
+      "query": "What is the fine for parking in a handicap-designated space in Boston?",
+      "expected_contains": ["$120", "$40"]
+    },
+    {
+      "id": "v007",
+      "domain": "violations",
+      "query": "How much is the fine for parking at a bus stop in Boston?",
+      "expected_contains": ["$100", "$33"]
+    },
+    {
+      "id": "v008",
+      "domain": "violations",
+      "query": "What is the fine for parking in a loading zone in Boston?",
+      "expected_contains": ["$90", "$18"]
+    },
+    {
+      "id": "v009",
+      "domain": "violations",
+      "query": "How much is a ticket for parking on a crosswalk in Boston?",
+      "expected_contains": ["$85", "$28"]
+    },
+    {
+      "id": "v010",
+      "domain": "violations",
+      "query": "What is the fine for parking on a sidewalk in Boston?",
+      "expected_contains": ["$65", "$21"]
+    },
+    {
+      "id": "v011",
+      "domain": "violations",
+      "query": "How much is a double parking ticket in Zone B?",
+      "expected_contains": ["$35", "Zone B", "$10"]
+    },
+    {
+      "id": "v012",
+      "domain": "violations",
+      "query": "What is the fine for parking more than one foot from the curb?",
+      "expected_contains": ["$35", "$11"]
+    },
+    {
+      "id": "v013",
+      "domain": "violations",
+      "query": "How much is the fine for blocking a driveway in Boston?",
+      "expected_contains": ["$25", "$8"]
+    },
+    {
+      "id": "v014",
+      "domain": "violations",
+      "query": "What is the fine for parking in an electric vehicle only spot without an EV?",
+      "expected_contains": ["$15", "$5"]
+    },
+    {
+      "id": "v015",
+      "domain": "violations",
+      "query": "What is the fine for parking the wrong direction on a street in Boston?",
+      "expected_contains": ["$15", "$5"]
+    },
+    {
+      "id": "v016",
+      "domain": "violations",
+      "query": "How much is the fine for an unpaid parking meter in Boston?",
+      "expected_contains": ["$40", "$8"]
+    },
+    {
+      "id": "v017",
+      "domain": "violations",
+      "query": "What is the fine for parking within 20 feet of an intersection in Boston?",
+      "expected_contains": ["$40", "$13"]
+    },
+    {
+      "id": "v018",
+      "domain": "violations",
+      "query": "What is the fine for parking in a fire lane in Boston?",
+      "expected_contains": ["$100", "$33"]
+    },
+    {
+      "id": "v019",
+      "domain": "violations",
+      "query": "How much is a No Parking Zone A ticket in Boston?",
+      "expected_contains": ["$90", "$18"]
+    },
+    {
+      "id": "v020",
+      "domain": "violations",
+      "query": "What is the fine for parking during a weather emergency in Boston?",
+      "expected_contains": ["$45", "$15"]
+    },
+    {
+      "id": "p001",
+      "domain": "permits",
+      "query": "How do I get a Boston resident parking permit?",
+      "expected_contains": ["online", "City Hall", "registration"]
+    },
+    {
+      "id": "p002",
+      "domain": "permits",
+      "query": "How long does it take to get a resident parking permit in Boston?",
+      "expected_contains": ["10 business days", "online"]
+    },
+    {
+      "id": "p003",
+      "domain": "permits",
+      "query": "Can I get my Boston parking permit the same day?",
+      "expected_contains": ["in person", "City Hall"]
+    },
+    {
+      "id": "p004",
+      "domain": "permits",
+      "query": "When should I renew my Boston parking permit?",
+      "expected_contains": ["four to six weeks", "expires"]
+    },
+    {
+      "id": "p005",
+      "domain": "permits",
+      "query": "What documents do I need to apply for a Boston resident parking permit?",
+      "expected_contains": ["registration", "Boston address"]
+    },
+    {
+      "id": "p006",
+      "domain": "permits",
+      "query": "Where is the Boston Parking Clerk office located?",
+      "expected_contains": ["City Hall", "Room 224", "1 City Hall Square"]
+    },
+    {
+      "id": "p007",
+      "domain": "permits",
+      "query": "What are the hours of the Boston Parking Clerk office?",
+      "expected_contains": ["Monday", "Friday", "4:30"]
+    },
+    {
+      "id": "p008",
+      "domain": "permits",
+      "query": "Can I use my resident parking permit on a different car?",
+      "expected_contains": ["specific vehicle", "license plate"]
+    },
+    {
+      "id": "p009",
+      "domain": "permits",
+      "query": "What happens if I move to a new neighborhood in Boston — do I need a new permit?",
+      "expected_contains": ["neighborhood", "new"]
+    },
+    {
+      "id": "p010",
+      "domain": "permits",
+      "query": "Can I apply for a Boston parking permit online on weekends?",
+      "expected_contains": ["weekend"]
+    },
+    {
+      "id": "p011",
+      "domain": "permits",
+      "query": "How do I get a rental car parking permit in Boston?",
+      "expected_contains": ["rental", "30 days", "rental contract"]
+    },
+    {
+      "id": "p012",
+      "domain": "permits",
+      "query": "What is the BC Stadium Walkshed Permit?",
+      "expected_contains": ["Boston College", "Allston", "football"]
+    },
+    {
+      "id": "p013",
+      "domain": "permits",
+      "query": "How do I apply for a replacement resident parking permit in Boston?",
+      "expected_contains": ["replace", "online", "reason"]
+    },
+    {
+      "id": "sc001",
+      "domain": "street_cleaning",
+      "query": "Does street cleaning happen when it rains in Boston?",
+      "expected_contains": ["rain", "not canceled"]
+    },
+    {
+      "id": "sc002",
+      "domain": "street_cleaning",
+      "query": "When does Boston street cleaning season start and end?",
+      "expected_contains": ["April 1", "November 30"]
+    },
+    {
+      "id": "sc003",
+      "domain": "street_cleaning",
+      "query": "How much is an overnight street cleaning ticket in Boston?",
+      "expected_contains": ["$90", "overnight"]
+    },
+    {
+      "id": "sc004",
+      "domain": "street_cleaning",
+      "query": "Does street cleaning happen on holidays in Boston?",
+      "expected_contains": ["holiday", "daytime", "overnight"]
+    },
+    {
+      "id": "sc005",
+      "domain": "street_cleaning",
+      "query": "What are the street cleaning hours for overnight tickets in Boston?",
+      "expected_contains": ["12:01 AM", "7:00 AM"]
+    },
+    {
+      "id": "sc006",
+      "domain": "street_cleaning",
+      "query": "How much is a street cleaning ticket in Charlestown?",
+      "expected_contains": ["$90", "Charlestown"]
+    },
+    {
+      "id": "sc007",
+      "domain": "street_cleaning",
+      "query": "When does street cleaning run in the North End of Boston?",
+      "expected_contains": ["North End", "March", "December"]
+    },
+    {
+      "id": "sc008",
+      "domain": "street_cleaning",
+      "query": "When does street cleaning run in Beacon Hill?",
+      "expected_contains": ["Beacon Hill", "March", "December"]
+    },
+    {
+      "id": "sc009",
+      "domain": "street_cleaning",
+      "query": "Does street cleaning happen on the 5th week of the month?",
+      "expected_contains": ["5th week", "every week"]
+    },
+    {
+      "id": "sc010",
+      "domain": "street_cleaning",
+      "query": "If my street is cleaned every other week does street cleaning happen on the 5th week?",
+      "expected_contains": ["5th week", "not enforced"]
+    },
+    {
+      "id": "sc011",
+      "domain": "street_cleaning",
+      "query": "What overrides the online street cleaning schedule in Boston?",
+      "expected_contains": ["posted street sign", "overrides"]
+    },
+    {
+      "id": "sc012",
+      "domain": "street_cleaning",
+      "query": "Does Boston cancel overnight street cleaning on holidays?",
+      "expected_contains": ["overnight", "not suspended", "holiday"]
+    },
+    {
+      "id": "sc013",
+      "domain": "street_cleaning",
+      "query": "Is street cleaning suspended on Thanksgiving in Boston?",
+      "expected_contains": ["Thanksgiving", "daytime", "overnight"]
+    },
+    {
+      "id": "sc014",
+      "domain": "street_cleaning",
+      "query": "When does street cleaning run in the South End of Boston?",
+      "expected_contains": ["South End", "March", "December"]
+    },
+    {
+      "id": "sc015",
+      "domain": "street_cleaning",
+      "query": "How much is a daytime street cleaning ticket in Boston?",
+      "expected_contains": ["$40", "daytime"]
+    },
+    {
+      "id": "r001",
+      "domain": "regulations",
+      "query": "Can commercial vehicles park overnight in residential areas in Boston?",
+      "expected_contains": ["overnight", "commercial", "12,000", "prohibit"]
+    },
+    {
+      "id": "r002",
+      "domain": "regulations",
+      "query": "What is the fine for an overnight heavy vehicle violation in Boston?",
+      "expected_contains": ["$100", "$33", "12,000"]
+    },
+    {
+      "id": "r003",
+      "domain": "regulations",
+      "query": "What are the general parking prohibitions in Boston?",
+      "expected_contains": ["stop", "stand", "park", "prohibit"]
+      },
+    {
+      "id": "r004",
+      "domain": "regulations",
+      "query": "What is required for posting temporary no parking signs in Boston?",
+      "expected_contains": ["temporary", "sign", "construction"]
+    },
+    {
+      "id": "r005",
+      "domain": "regulations",
+      "query": "Can you park within 20 feet of an intersection in Boston?",
+      "expected_contains": ["20 feet", "intersection"]
+    },
+    {
+      "id": "r006",
+      "domain": "regulations",
+      "query": "What happens to vehicles that are illegally parked and immobilized in Boston?",
+      "expected_contains": ["immobilization", "five", "parking violation"]
+    },
+    {
+      "id": "r007",
+      "domain": "regulations",
+      "query": "Are there special parking rules near the State House in Boston?",
+      "expected_contains": ["General Court", "parking", "streets"]
+    },
+    {
+      "id": "r008",
+      "domain": "regulations",
+      "query": "What are the rules for angle parking in Boston?",
+      "expected_contains": ["angle", "curb", "roadway"]
+    },
+    {
+      "id": "r009",
+      "domain": "regulations",
+      "query": "Can you park in a pedestrian zone in Boston?",
+      "expected_contains": ["pedestrian", "$100"]
+    },
+    {
+      "id": "r010",
+      "domain": "regulations",
+      "query": "What are the open air parking space rules in Boston?",
+      "expected_contains": ["open-air", "license"]
+    },
+    {
+      "id": "edge001",
+      "domain": "violations",
+      "query": "What is the difference between a Zone A and Zone B no parking fine?",
+      "expected_contains": ["Zone A", "Zone B", "$90", "$55"]
+    },
+    {
+      "id": "edge002",
+      "domain": "violations",
+      "query": "Is the fine for parking at a Fenway event the same as a hydrant violation?",
+      "expected_contains": ["$100", "Fenway", "hydrant"]
+    },
+    {
+      "id": "edge003",
+      "domain": "violations",
+      "query": "What is the late penalty for an overnight street cleaning ticket?",
+      "expected_contains": ["$30", "overnight"]
+    },
+    {
+      "id": "edge004",
+      "domain": "violations",
+      "query": "What is the late penalty for a loading zone violation?",
+      "expected_contains": ["$18", "loading zone"]
+    },
+    {
+      "id": "edge005",
+      "domain": "street_cleaning",
+      "query": "Is street cleaning year round in Boston or only seasonal?",
+      "expected_contains": ["April 1", "November 30", "March", "December"]
+    },
+    {
+      "id": "edge006",
+      "domain": "permits",
+      "query": "Can I renew my Boston parking permit online if it has already expired?",
+      "expected_contains": ["expired", "online"]
+    },
+    {
+      "id": "edge007",
+      "domain": "violations",
+      "query": "What is the fine for an electric vehicle parked in an EV spot but not actively charging?",
+      "expected_contains": ["$15", "$5", "charging"]
+    },
+    {
+      "id": "edge008",
+      "domain": "violations",
+      "query": "What is the fine for parking in a taxi stand in Boston?",
+      "expected_contains": ["$50", "$16", "taxi"]
+    },
+    {
+      "id": "oos001",
+      "domain": "out_of_scope",
+      "query": "What are the parking rules in Cambridge MA?",
+      "expected_contains": ["Boston", "Cambridge"]
+    },
+    {
+      "id": "oos002",
+      "domain": "out_of_scope",
+      "query": "How do I contest a parking ticket in court in Boston?",
+      "expected_contains": ["hearing", "Parking Clerk", "Room 224"]
+    },
+    {
+      "id": "oos003",
+      "domain": "out_of_scope",
+      "query": "Where can I find parking garages near Fenway Park?",
+      "expected_contains": ["garage", "parking"]
+    },
+    {
+      "id": "multi001",
+      "domain": "mixed",
+      "query": "What is the fine for street cleaning and when does the season run?",
+      "expected_contains": ["$40", "$90", "April 1", "November 30"]
+    },
+    {
+      "id": "multi002",
+      "domain": "mixed",
+      "query": "How much is a hydrant ticket and what happens if I don't pay it?",
+      "expected_contains": ["$100", "$33", "21 days", "late"]
+    },
+    {
+      "id": "multi003",
+      "domain": "mixed",
+      "query": "How do I get a resident parking permit and how long does it take?",
+      "expected_contains": ["online", "City Hall", "10 business days"]
+    },
+    {
+      "id": "multi004",
+      "domain": "mixed",
+      "query": "Does street cleaning happen on Labor Day and if I get a ticket how much is it?",
+      "expected_contains": ["Labor Day", "daytime", "overnight"]
+    },
+    {
+      "id": "multi005",
+      "domain": "mixed",
+      "query": "What is the difference between Zone A and Zone B double parking fines and which is more expensive?",
+      "expected_contains": ["Zone A", "Zone B", "$55", "$35"]
+    }
+  ]
