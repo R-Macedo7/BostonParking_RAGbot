@@ -383,3 +383,70 @@ Boston Transportation Department: [boston.gov/departments/transportation](https:
 Parking Clerk Office: 1 City Hall Square, Room 224, Boston MA 02201  
 Phone: 617-635-4410  
 Hours: Monday–Friday, 8:30 a.m. to 4:30 p.m.
+
+---
+
+## Using a Different Model Provider
+
+By default this project uses the OpenAI API. Swapping to a different provider (Anthropic, Google, Ollama, etc.) requires changes in four files beyond `config/settings.py`.
+
+### OpenAI model swap (easiest)
+If you just want a different OpenAI model, update these two lines in `config/settings.py`:
+```python
+MODEL_NANO = "gpt-4o-mini"   # or any OpenAI chat model
+MODEL_MINI = "gpt-4o"
+EMBEDDING_MODEL = "text-embedding-3-large"  # or text-embedding-ada-002
+```
+No other changes needed.
+
+### Switching to a different provider (Anthropic, Google, Ollama, etc.)
+You need to update four files:
+
+**1. `generation/generator.py`** — replace the OpenAI client and API call:
+```python
+# Current (OpenAI)
+from openai import OpenAI
+client = OpenAI(api_key=OPENAI_API_KEY)
+response = client.chat.completions.create(
+    model=model,
+    messages=messages,
+    max_completion_tokens=max_tokens,
+    temperature=TEMPERATURE,
+)
+answer = response.choices[0].message.content.strip()
+
+# Anthropic example
+import anthropic
+client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+response = client.messages.create(
+    model="claude-opus-4-5",
+    max_tokens=max_tokens,
+    messages=messages,
+)
+answer = response.content[0].text.strip()
+```
+
+**2. `retrieval/query_decomposer.py`** — same client swap as above for the decomposition call.
+
+**3. `indexing/build_vector_index.py`** — replace the embedding call:
+```python
+# Current (OpenAI)
+response = client.embeddings.create(model=EMBEDDING_MODEL, input=batch)
+batch_embeddings = [item.embedding for item in response.data]
+
+# Example using sentence-transformers (local, free)
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer("all-MiniLM-L6-v2")
+batch_embeddings = model.encode(batch).tolist()
+```
+
+**4. `retrieval/dense_retriever.py`** — replace the query embedding call with the same approach used in step 3.
+
+### Using a local model (Ollama)
+If you want to run fully locally with no API costs:
+1. Install [Ollama](https://ollama.ai) and pull a model: `ollama pull llama3`
+2. Ollama exposes an OpenAI-compatible API at `http://localhost:11434/v1` — set `OPENAI_API_KEY=ollama` and point the base URL to localhost
+3. For embeddings use `sentence-transformers` locally (see step 3 above)
+4. Update `MODEL_NANO` and `MODEL_MINI` in `config/settings.py` to your Ollama model name
+
+> **Note:** Local models will produce lower quality regulatory synthesis than GPT-5.4 mini. For a regulatory accuracy-critical use case, a hosted model is strongly recommended.
