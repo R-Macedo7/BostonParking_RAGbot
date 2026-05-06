@@ -1,0 +1,122 @@
+[
+  {
+    "id": "towing_city_lot",
+    "text": "The City of Boston Tow Lot is located at 200 Frontage Road, South Boston, MA 02118. All vehicles towed by the city are taken to this single location regardless of where in Boston the vehicle was towed from. Phone: 617-635-3900. Email: btd@boston.gov. Hours: Monday through Friday, 7:00 a.m. to 10:30 p.m. Automated kiosks are available 24 hours a day, 7 days a week for vehicle releases.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "City Tow Lot Location and Hours",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_fees_payment",
+    "text": "Boston city tow fees and accepted payment: The City of Boston charges a $90 tow fee plus a storage fee of $3 per hour, up to a maximum of $15 per day. At the tow lot office, accepted payment methods are cash, money order, cashier's check, or debit/credit card. At the automated kiosk, accepted payment is cash, VISA, Mastercard, or Discover card. Credit and debit cards at the kiosk are subject to a 2.5 percent fee. For private company tows, the maximum involuntary tow rate is $132. Private storage rates are $35 per 24-hour period.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Towing Fees and Payment",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_find_car",
+    "text": "How to find your towed car in Boston: If you know your license plate number, search the online towed cars database at boston.gov \u2014 it has information for the past 15 days. You can also call the Boston Police Tow Line at 617-343-4629 to find out which company towed your car. If you don't know your plate number, call Boston Police at 617-343-4629 and provide the make, model, color, and address where the car was towed from. For cars towed to the City Tow Lot, call 617-635-3900. You can sign up for towing alerts at boston.gov to receive notification within 10 minutes of your car being towed.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "How to Find Your Towed Car",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_reasons",
+    "text": "Common reasons for getting towed in Boston and appeal rights: Street cleaning or sweeping violations are the most common reason for towing. Other common reasons include illegal parking, and having five or more overdue parking tickets. If your vehicle was towed for five or more unpaid tickets, you must pay all overdue tickets and fees before retrieving your car \u2014 you are not eligible for a hearing. If towed for illegal parking, you CAN appeal \u2014 you can request a walk-in hearing within five days of the tow at the Parking Clerk office, or schedule a hearing by calling 617-635-4410. Cars towed on state roads like Storrow Drive or the Jamaicaway fall under Massachusetts State Police jurisdiction \u2014 the City of Boston does not have access to that data.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Reasons for Towing and Appeals",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_private_vs_city",
+    "text": "City tow lot vs private tow company in Boston: If your car was towed by the city, it will be at the City of Boston Tow Lot at 200 Frontage Road, South Boston. Call 617-635-3900. If your car was towed by a private company (common for street sweeping violations), it could be at any private lot. Call Boston Police at 617-343-4629 to find out which company has it, then contact that company directly. If the Boston Police requested the tow, you must go to the police station before picking up your vehicle from the private company. The city publishes a list of private towing companies at boston.gov/towing-companies.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "City vs Private Tow Companies",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_alerts",
+    "text": "Boston towing alerts system: You can sign up for free towing alerts at boston.gov to receive phone, email, or text notifications when your car is towed. Alerts are sent within 10 minutes of a tow being reported to the Boston Police database. The system covers cars towed to the city lot and private lots, but does NOT cover cars towed by the Massachusetts State Police. You can register up to 10 license plates per email address. Note: towing companies that repossess vehicles may also use this alert system, which could result in repossession at the tow lot before the owner arrives.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Towing Alert System",
+      "source": "https://www.boston.gov/departments/transportation/towing-alerts-common-questions",
+      "source_name": "Boston Towing Alerts"
+    }
+  },
+  {
+    "id": "towing_abandoned_vehicles",
+    "text": "Abandoned vehicles in Boston: If an abandoned car is not removed from a public way, the city tows it to the Boston Transportation Department Tow Lot at 200 Frontage Road. Once towed, an abandoned car may be disposed of at any time. If the car has value it may be stored and auctioned after 30 days. The fine for abandoning a vehicle is $250 for a first offense and $500 for each offense after. To recover an abandoned vehicle you need a valid driver's license, proof of registration, insurance, and payment of all tow and storage fees. Report abandoned vehicles through BOS:311.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Abandoned Vehicles",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_towing_guide_000",
+    "text": "Find your car\n\nIf you know your license plate number, you can search our online database . You can also call the Boston Police Department at 617-343-4629 to find out which company towed your car. If you don\u2019t know your license plate number, call Boston Police\u00a0at 617-343-4629 . Please\u00a0provide the make, model, and color of vehicle, the address where it was towed from, or other important information.\u00a0You can also contact Tow operators in Boston directly. After you find your car If your car is located at the City of Boston Tow Lot , please continue down to Step 2 on this page. If your\u00a0car was towed by a private tow company , scroll down to Step 3. If your car was towed on a state road or as an abandoned vehicle, check out our towing page for more information.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Find your car",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_towing_guide_001",
+    "text": "Is your car at the City of Boston Tow Lot?\n\nWe charge a $90 tow fee, along with a storage fee of $3 per hour, up to $15 a day.\u00a0You can pay with cash, a money order, a cashier\u2019s check, or a debit or credit card. If you pay by card, you will be subject to a 2.5 percent\u00a0fee. There is also a kiosk at the\u00a0tow lot that you can use 24 hours a day, seven days a week. To use the kiosk, you need to meet these requirements: You can pay with cash, VISA, Mastercard, or Discover card\u00a0(cards subject to a 2.5 percent\u00a0fee) You need to know your license plate number. You need to know your insurance information. Your car must be actively registered. You need a valid license, and the name on your license needs to match the name on your credit or debit card. The City of Boston Tow Lot is located at: 200 Frontage Road Boston, MA 02118 The City of Boston tow lot is only\u00a0open Monday through Friday, from 7 a.m. - 10:30 p.m. Automated kiosks are available 24 hours a day, seven days a week for vehicle releases. For more information, call 617-635-3900 or email btd@boston.gov . Remember to pay your parking ticket and fees To avoid a late fee, you will also need to pay or appeal your parking ticket within 21 days. The ticket will be stuck under your windshield wiper. Learn h ow to pay a parking ticket. If your vehicle was seized due to five\u00a0or more tickets unpaid, to get your car back, you need to pay all of your overdue parking tickets and fees.\u00a0You can make your payment at the City of Boston Tow Lot when you come to get your car.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Is your car at the City of Boston Tow Lot?",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_towing_guide_002",
+    "text": "Remember to pay your parking ticket and fees\n\nTo avoid a late fee, you will also need to pay or appeal your parking ticket within 21 days. The ticket will be stuck under your windshield wiper. Learn h ow to pay a parking ticket. If your vehicle was seized due to five\u00a0or more tickets unpaid, to get your car back, you need to pay all of your overdue parking tickets and fees.\u00a0You can make your payment at the City of Boston Tow Lot when you come to get your car.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Remember to pay your parking ticket and fees",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_towing_guide_003",
+    "text": "Were you towed by a private tow company?\n\nCall the company before you arrive and ask what you need to do before picking up your vehicle. Your vehicle may have been towed for: street cleaning illegal parking on private property, or the Boston Police authorized the tow. If the Boston Police requested the tow, you will need to go to the police station before getting your car from the private tow company. When you call the company, they will tell you what you need to do. Once you find the private tow company that has your car, you can go and pick it up. The maximum charge for involuntary towing of motor vehicles by police order or for trespass on private property is set forth in 220 C.M.R. \u00a7 272.00. Currently, the maximum rate for police-ordered or involuntary towing (from private property) is $132.00 for towing. The storage rate for non-commercial motor vehicles is set forth in G.L. c. 159B, \u00a7 6B. Currently, the rate is $35.00 per 24-hour period for storage. Additional charges may be assessed if additional labor is needed. The Department of Public Utilities (DPU) monitors and regulates towing companies and can help you File a complaint against a bus, moving, or towing company Private tow companies charge rates and collect fees in accordance with the MA Department of Public Utilities (DPU) Rates for the Towing of Motor Vehicles (220 CMR 272.00).\" $132\u00a0for the tow $35 for each day they store your car, and a fuel surcharge. To find out what the fuel surcharge will be, check the fuel charge factor on the state's website. Remember to pay your parking ticket and fees To avoid a late fee, you will also need to pay or appeal your parking ticket within 21 days. The ticket will be stuck under your windshield wiper. Learn h ow to pay a parking ticket. If your vehicle was seized due to five\u00a0or more tickets unpaid, to get your car back, you need to pay all of your overdue parking tickets and fees.\u00a0You can make your payment at the City of Boston Tow Lot when you come to get your car.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Were you towed by a private tow company?",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  },
+  {
+    "id": "towing_towing_guide_004",
+    "text": "Remember to pay your parking ticket and fees\n\nTo avoid a late fee, you will also need to pay or appeal your parking ticket within 21 days. The ticket will be stuck under your windshield wiper. Learn h ow to pay a parking ticket. If your vehicle was seized due to five\u00a0or more tickets unpaid, to get your car back, you need to pay all of your overdue parking tickets and fees.\u00a0You can make your payment at the City of Boston Tow Lot when you come to get your car.",
+    "metadata": {
+      "domain": "towing",
+      "section_title": "Remember to pay your parking ticket and fees",
+      "source": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+      "source_name": "Boston Towing Guide"
+    }
+  }
+]

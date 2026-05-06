@@ -21,8 +21,14 @@ def truncate_text(text: str, max_chars: int = 30000) -> str:
 
 def load_all_chunks() -> list[dict]:
     all_chunks = []
+    seen_files = set()
     for source_key, source in SOURCES.items():
+        if not source.get("chunks_file"):
+            continue
         chunks_file = DATA_CHUNKS / source["chunks_file"]
+        if chunks_file in seen_files:
+            continue
+        seen_files.add(chunks_file)
         if not chunks_file.exists():
             print(f"[vector] Warning: {chunks_file} not found, skipping")
             continue
@@ -68,11 +74,9 @@ def build_vector_index() -> None:
 
     print(f"[vector] Building vector index over {len(chunks)} chunks...")
 
-    # Initialize clients
     openai_client = OpenAI(api_key=OPENAI_API_KEY)
     chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
 
-    # Delete existing collection if rebuilding
     try:
         chroma_client.delete_collection(CHROMA_COLLECTION)
         print(f"[vector] Deleted existing collection '{CHROMA_COLLECTION}'")
@@ -84,11 +88,9 @@ def build_vector_index() -> None:
         metadata={"hnsw:space": "cosine"}
     )
 
-    # Embed all chunk texts
     texts = [chunk["text"] for chunk in chunks]
     embeddings = get_embeddings(texts, openai_client)
 
-    # Load into ChromaDB in batches
     BATCH_SIZE = 100
     for i in range(0, len(chunks), BATCH_SIZE):
         batch_chunks = chunks[i:i + BATCH_SIZE]

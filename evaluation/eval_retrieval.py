@@ -22,6 +22,7 @@ DOMAIN_SOURCE_MAP = {
     "permits": "Boston Resident Parking Permit Guide",
     "street_cleaning": "Analyze Boston Street Sweeping Schedules",
     "regulations": "City of Boston Traffic Rules and Regulations (March 2025)",
+    "towing": "Boston Towing Guide",
 }
 
 

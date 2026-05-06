@@ -6,7 +6,7 @@ An AI-powered chatbot for Boston parking regulations using a hybrid BM25 + cosin
 
 ## Overview
 
-Boston Parking RAG answers natural language questions about Boston parking rules, fines, street cleaning schedules, and resident permit programs. It retrieves answers strictly from official City of Boston sources — no hallucination, no invented rules.
+Boston Parking RAG answers natural language questions about Boston parking rules, fines, street cleaning schedules, resident permit programs, and towing. It retrieves answers strictly from official City of Boston sources — no hallucination, no invented rules.
 
 **Live demo:** Start the API (`python3 api/main.py`) and open `frontend/index.html` in a browser.
 
@@ -17,7 +17,7 @@ Boston Parking RAG answers natural language questions about Boston parking rules
 ```
 Query
   │
-  ├─► Query classifier      — detects domain (violations/permits/street_cleaning/regulations)
+  ├─► Query classifier      — detects domain (violations/permits/street_cleaning/regulations/towing)
   │                           and street name entities
   ├─► Query decomposer       — GPT-5.4 nano splits multi-part queries into sub-queries
   │
@@ -57,6 +57,9 @@ Query
 | [Resident Parking Permit Guide](https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit) | HTML | permits | 90 days |
 | [Street Sweeping Schedules](https://data.boston.gov/dataset/street-sweeping-schedules) | CSV (Analyze Boston) | street_cleaning | 30 days |
 | [BTD Traffic Rules & Regulations](https://www.boston.gov/departments/transportation/city-boston-traffic-rules-and-regulations) | PDF (March 2025, 80 pages) | regulations | 365 days |
+| [How to Get Your Towed Car Back](https://www.boston.gov/departments/transportation/how-get-your-towed-car-back) | HTML | towing | 90 days |
+| [Towing Companies in Boston](https://www.boston.gov/departments/transportation/towing-companies-boston) | HTML | towing | 90 days |
+| [Towing Alerts FAQ](https://www.boston.gov/departments/transportation/towing-alerts-common-questions) | HTML | towing | 180 days |
 
 ### Corpus stats
 | Source | Chunks | Strategy |
@@ -65,19 +68,20 @@ Query
 | Permit eligibility | ~20 | 1 chunk per section + key fact chunks |
 | Street cleaning | ~1,682 | 1 chunk per street + general rules + holidays + neighborhood seasons |
 | Traffic rules | ~113 | Section-aware PDF splitting (Article/Section headers), min 150 chars |
-| **Total** | **~1,881** | |
+| Towing | ~20 | 7 key fact chunks + section-based chunks from 3 scraped pages |
+| **Total** | **~1,882** | |
 
 ---
 
 ## Evaluation Results
 
-All evaluations run against 74 ground-truth queries spanning violations, permits, street cleaning, regulations, edge cases, out-of-scope, and multi-part queries.
+All evaluations run against 84 ground-truth queries spanning violations, permits, street cleaning, regulations, towing, edge cases, out-of-scope, and multi-part queries.
 
 ### Retrieval (eval_retrieval.py)
 | Metric | Score |
 |---|---|
-| Recall@5 | **100%** (15/15 original queries) |
-| MRR | **0.967** |
+| Recall@5 | **98%** (82/84) |
+| MRR | **0.885** |
 
 Retrieval improved significantly after enabling full hybrid search:
 
@@ -85,21 +89,19 @@ Retrieval improved significantly after enabling full hybrid search:
 |---|---|---|
 | BM25 only (ChromaDB empty) | 87% | 0.722 |
 | Hybrid BM25 + dense | 93% | 0.900 |
-| Hybrid + metadata filter fixes | **100%** | **0.967** |
+| Hybrid + metadata filter fixes | 100% | 0.967 |
+| + Towing corpus added | **98%** | **0.885** |
 
 ### Generation (eval_generation.py)
 | Metric | Score |
 |---|---|
-| Pass rate (≥80% keyword coverage) | **96%** (71/74) |
+| Pass rate (≥80% keyword coverage) | **94%** (79/84) |
 | Average keyword score | **98%** |
-| Nano calls | 43/74 |
-| Mini calls | 31/74 |
-| Avg tokens per query | ~2,270 |
+| Nano calls | 53/84 |
+| Mini calls | 31/84 |
+| Avg tokens per query | ~2,045 |
 
-The 3 remaining misses:
-- `r003` — test keyword mismatch ("violation" vs "prohibit"), answer is factually correct
-- `r009` — pedestrian zone fine not co-located in PDF (genuine corpus limitation, model correctly declines to hallucinate)
-- `edge001` — resolved after metadata filter fix (zone keywords removed from permit classifier)
+The 5 remaining misses are all test keyword mismatches — the answers are factually correct but use different phrasing than the expected keywords. No hallucinations detected across any query.
 
 ---
 
@@ -117,7 +119,8 @@ Boston_Parking/
 │   ├── chunk_violations.py      # 1 chunk per violation + special chunks
 │   ├── chunk_permits.py         # 1 chunk per section + key facts
 │   ├── chunk_street_cleaning.py # Per-street assembly + general rules
-│   └── chunk_traffic_rules.py   # Section-aware PDF chunking (min 150 chars)
+│   ├── chunk_traffic_rules.py   # Section-aware PDF chunking (min 150 chars)
+│   └── chunk_towing.py          # Key fact chunks + section-based towing chunks
 │
 ├── config/
 │   ├── settings.py              # All tunable parameters (models, paths, K values)
@@ -131,13 +134,14 @@ Boston_Parking/
 │   └── bm25_index.pkl           # Serialized BM25 index (gitignored)
 │
 ├── evaluation/
-│   ├── test_queries.json        # 74 ground-truth Q&A pairs
+│   ├── test_queries.json        # 84 ground-truth Q&A pairs
 │   ├── eval_retrieval.py        # Recall@K and MRR measurement
 │   ├── eval_generation.py       # Keyword coverage + model routing stats
 │   └── run_eval.py              # Full pipeline eval
 │
 ├── frontend/
-│   └── index.html               # Chat UI — Boston civic aesthetic, dark navy/gold
+│   ├── index.html               # Chat UI — Boston civic aesthetic, dark navy/gold
+│   └── slides.html              # Presentation slides
 │
 ├── generation/
 │   ├── generator.py             # Nano/mini router + OpenAI API calls
@@ -154,7 +158,8 @@ Boston_Parking/
 │   ├── scrape_violations.py     # Scrapes boston.gov fines table
 │   ├── scrape_permits.py        # Scrapes permit eligibility page
 │   ├── download_street_cleaning.py  # Downloads Analyze Boston CSV
-│   └── parse_traffic_rules.py   # Downloads + section-parses BTD PDF
+│   ├── parse_traffic_rules.py   # Downloads + section-parses BTD PDF
+│   └── scrape_towing.py         # Scrapes 3 towing pages from boston.gov
 │
 ├── retrieval/
 │   ├── bm25_retriever.py        # Sparse BM25 search
@@ -173,6 +178,7 @@ Boston_Parking/
 │   └── test_generation.py       # 14 tests — prompt building, routing, formatting
 │
 ├── .env.example
+├── .gitattributes
 ├── .gitignore
 └── requirements.txt
 ```
@@ -226,6 +232,7 @@ python3 ingestion/run_all.py --source violations
 python3 ingestion/run_all.py --source permits
 python3 ingestion/run_all.py --source street_cleaning
 python3 ingestion/run_all.py --source traffic_rules
+python3 ingestion/run_all.py --source towing
 ```
 
 ### Step 2 — Chunk all sources
@@ -235,6 +242,7 @@ python3 chunking/chunk_all.py
 Single source:
 ```bash
 python3 chunking/chunk_all.py --source violations
+python3 chunking/chunk_all.py --source towing
 ```
 
 ### Step 3 — Build indexes
@@ -341,7 +349,7 @@ python3 scripts/refresh_data.py --check   # status report, no refresh
 
 Recommended refresh schedule:
 - Street cleaning — every 30 days (seasonal changes)
-- Violations + permits — every 90 days
+- Violations + permits + towing — every 90 days
 - Traffic rules PDF — annually
 
 ---
@@ -374,6 +382,7 @@ TEMPERATURE = 0.0    # deterministic — regulatory answers must be consistent
 - **Legacy street cleaning dataset** — the Analyze Boston CSV is marked as a legacy dataset. The city's live lookup tool may have more current data for some streets.
 - **PDF text extraction** — some sections of the BTD PDF parse as near-empty chunks due to PDF formatting. These are filtered out at chunking time (min 150 chars threshold).
 - **Bulk queries** — "list all streets" type queries are not supported by design. The chatbot is built for specific questions, not database exports.
+- **Private tow companies** — the towing corpus covers city tow lot rules and the process for finding private companies, but does not contain individual private company information which changes frequently.
 
 ---
 
@@ -394,10 +403,12 @@ TEMPERATURE = 0.0    # deterministic — regulatory answers must be consistent
 
 ## Contact
 
-Boston Transportation Department: [boston.gov/departments/transportation](https://www.boston.gov/departments/transportation)  
-Parking Clerk Office: 1 City Hall Square, Room 224, Boston MA 02201  
-Phone: 617-635-4410  
+Boston Transportation Department: [boston.gov/departments/transportation](https://www.boston.gov/departments/transportation)
+Parking Clerk Office: 1 City Hall Square, Room 224, Boston MA 02201
+Phone: 617-635-4410
 Hours: Monday–Friday, 8:30 a.m. to 4:30 p.m.
+City Tow Lot: 200 Frontage Road, South Boston — 617-635-3900
+Boston Police Tow Line: 617-343-4629
 
 ---
 

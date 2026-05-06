@@ -5,6 +5,7 @@ Run this after ingestion/run_all.py completes.
 Usage:
     python chunking/chunk_all.py
     python chunking/chunk_all.py --source violations
+    python chunking/chunk_all.py --source towing
 """
 
 import argparse
@@ -22,12 +23,14 @@ def run_all(source_filter: str = None):
     from chunking.chunk_permits import chunk_permits
     from chunking.chunk_street_cleaning import chunk_street_cleaning
     from chunking.chunk_traffic_rules import chunk_traffic_rules
+    from chunking.chunk_towing import chunk_towing
 
     sources = {
         "violations": chunk_violations,
         "permits": chunk_permits,
         "street_cleaning": chunk_street_cleaning,
         "traffic_rules": chunk_traffic_rules,
+        "towing": chunk_towing,
     }
 
     if source_filter:

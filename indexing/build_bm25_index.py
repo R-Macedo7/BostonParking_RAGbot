@@ -13,8 +13,14 @@ from config.settings import DATA_CHUNKS, BM25_INDEX_PATH, SOURCES
 
 def load_all_chunks() -> list[dict]:
     all_chunks = []
+    seen_files = set()
     for source_key, source in SOURCES.items():
+        if not source.get("chunks_file"):
+            continue
         chunks_file = DATA_CHUNKS / source["chunks_file"]
+        if chunks_file in seen_files:
+            continue
+        seen_files.add(chunks_file)
         if not chunks_file.exists():
             print(f"[bm25] Warning: {chunks_file} not found, skipping")
             continue
@@ -46,7 +52,6 @@ def build_bm25_index() -> None:
     corpus = [tokenize(chunk["text"]) for chunk in chunks]
     bm25 = BM25Okapi(corpus)
 
-    # Persist index + chunks together so retriever can map scores back to chunks
     payload = {
         "bm25": bm25,
         "chunks": chunks,

@@ -6,6 +6,7 @@ Usage:
     python ingestion/run_all.py
     python ingestion/run_all.py --source violations
     python ingestion/run_all.py --source street_cleaning
+    python ingestion/run_all.py --source towing
 """
 
 import argparse
@@ -25,12 +26,14 @@ def run_all(source_filter: str = None):
     from ingestion.scrape_permits import scrape_permits
     from ingestion.download_street_cleaning import download_street_cleaning
     from ingestion.parse_traffic_rules import parse_traffic_rules
+    from ingestion.scrape_towing import scrape_towing
 
     sources = {
         "violations": scrape_violations,
         "permits": scrape_permits,
         "street_cleaning": download_street_cleaning,
         "traffic_rules": parse_traffic_rules,
+        "towing": scrape_towing,
     }
 
     if source_filter:

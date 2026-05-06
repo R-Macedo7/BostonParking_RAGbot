@@ -1,0 +1,24 @@
+{
+  "sections": [],
+  "notes": [
+    "A .boston.gov website belongs to an official government organization in the City of Boston.",
+    "A lock(lock)or https:// means you've safely connected to the\n              .gov website. Share sensitive information only on official, secure\n              websites.",
+    "You cansign up online for towing alertswith your email address and license plate number. If your car is involuntarily towed in Boston's jurisdiction, then the system will email you.",
+    "The alert system will work for any vehicle towed from City of Boston property. This includes cars towed for:",
+    "It also covers cars towed from private property, such as the parking lot of your favorite donut shop.",
+    "Not included in this system are cars towed by the Massachusetts State Police. For example, vehicles towed from the Jamaicaway and Storrow Drive fall under the jurisdiction of the State Police. The City of Boston does not have access to this data.",
+    "Alerts are intended to provide timely notification of the tow. Once alerted, drivers will be in a position to get\u00a0their vehicles quickly and avoid the accumulation of storage charges.",
+    "Alerts are sent within 10 minutes of the tow being reported. Notifications are based on information entered into the Boston Police Department towing database. Cars towed to the Boston Transportation Department's Frontage Road tow lot have their information entered into the database as they arrive at the lot. However, when a car is towed to a private tow lot (such as for street sweeping), it is the responsibility of the tow operator to inform the Boston Police Department. This extra step may delay the process of entering the information into the database.",
+    "Users are limited to 10\u00a0plate numbers per email address. If you own a fleet and have a legitimate business need for alerts for more than 10\u00a0license plates, then please describe your case tono-tow@cityofboston.govand we will find a way to accommodate you.",
+    "You can unsubscribe from thesubscribe webpage, by toggling the \"add/delete\"\u00a0option.",
+    "To obtain a list of license-plates your email address is already receiving alerts for, submit your email addresson the remind-me page.",
+    "If you subscribe using the \"HTML Email\" form, then towing alerts will contain full details. If you subscribe using the \"TXT\" form, then because of TXT message length restrictions, your towing alerts will only contain a link which you can follow to get full details.",
+    "There is no charge from the City. However, your cell phone company may bill you for TXT messages you receive.",
+    "The towing of a vehicle is already considered public information. Today, anyone can contact the Boston Police\u00a0with a license plate number and ask\u00a0if it has been towed.",
+    "Please note: Although towing alerts are intended as a service to vehicle owners, the City of Boston is not in a position to prevent others from using the system as well. Companies in the business of repossessing vehicles frequently register for towing alerts. This may result in a vehicle being repossessed directly at the Tow Lot prior to the registered owner having an opportunity to reclaim the vehicle.",
+    "In rare cases, constituents may receive alerts when their car was not towed. There are three possibilities:",
+    "Please note:Remember to double check the posted signs on your street. If the posted sign is different from an electronic towing notification, you should always follow the posted sign on the street."
+  ],
+  "source": "https://www.boston.gov/departments/transportation/towing-alerts-common-questions",
+  "domain": "towing"
+}

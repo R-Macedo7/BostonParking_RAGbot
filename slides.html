@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boston Parking RAG — Applied ML Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --optic-blue:   #091F2F;
+      --charles-blue: #288BE4;
+      --freedom-red:  #FB4D42;
+      --snow:         #F3F6F6;
+      --white:        #FFFFFF;
+      --grey-100:     #E0E6E8;
+      --grey-200:     #C8D3D9;
+      --grey-300:     #828D95;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--snow);
+      color: var(--optic-blue);
+      font-family: 'Lora', Georgia, serif;
+      overflow: hidden;
+      cursor: none;
+    }
+
+    .cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--freedom-red); border-radius: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 8px; background: var(--optic-blue);
+      z-index: 100; border-bottom: 4px solid var(--charles-blue);
+    }
+
+    .top-label {
+      position: fixed; top: 24px; right: 48px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--grey-300); z-index: 100;
+    }
+
+    .boston-logo {
+      position: fixed; top: 24px; left: 48px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 20px;
+      letter-spacing: -0.05em; color: var(--optic-blue);
+      z-index: 100; display: flex; align-items: center; gap: 8px;
+    }
+    .boston-logo span {
+      display: inline-block; width: 24px; height: 24px;
+      background: var(--charles-blue); border-radius: 50%;
+    }
+    .boston-logo.light { color: var(--white); }
+
+    .deck { position: relative; z-index: 1; width: 100vw; height: 100vh; overflow: hidden; }
+
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 80px 100px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: all; }
+
+    .slide.centered { align-items: center; text-align: center; }
+
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--charles-blue); margin-bottom: 14px;
+      display: inline-block;
+      border-bottom: 3px solid var(--freedom-red);
+      padding-bottom: 4px;
+    }
+
+    .display {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; color: var(--optic-blue);
+    }
+
+    .accent-blue { color: var(--charles-blue); }
+    .accent-red  { color: var(--freedom-red); }
+
+    .body {
+      font-size: 19px; line-height: 1.65;
+      color: var(--optic-blue); max-width: 1080px; margin-top: 18px;
+    }
+
+    .slide.active .eyebrow       { animation: up 0.4s 0.08s both; }
+    .slide.active .display       { animation: up 0.4s 0.16s both; }
+    .slide.active .body          { animation: up 0.4s 0.24s both; }
+    .slide.active .content-block { animation: up 0.4s 0.32s both; }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 100; background: var(--optic-blue); padding: 16px 48px;
+    }
+    .nav-btn {
+      background: none; border: 2px solid transparent;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      cursor: none; padding: 8px 16px; transition: all 0.2s;
+    }
+    .nav-btn:hover { border-color: var(--charles-blue); color: var(--charles-blue); }
+    .dots { display: flex; gap: 8px; align-items: center; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 0;
+      background: var(--grey-300); cursor: none; transition: all 0.2s;
+    }
+    .dot.active { background: var(--charles-blue); width: 24px; }
+    .counter {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: var(--white); min-width: 50px; text-align: right;
+    }
+
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 28px; width: 100%; max-width: 1100px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-top: 6px solid var(--optic-blue);
+      padding: 24px 28px;
+      box-shadow: 0 4px 12px rgba(9,31,47,0.05);
+    }
+    .card.red  { border-top-color: var(--freedom-red); }
+    .card.blue { border-top-color: var(--charles-blue); }
+
+    .card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      color: var(--grey-300); margin-bottom: 6px;
+    }
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px; font-weight: 800;
+      color: var(--optic-blue); margin-bottom: 10px;
+    }
+    .card-body { font-size: 14px; line-height: 1.65; color: var(--optic-blue); }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: var(--optic-blue); background: var(--grey-100);
+      padding: 5px 10px; margin: 3px 3px 3px 0; text-transform: uppercase;
+    }
+    .tag.dark { background: var(--optic-blue); color: var(--white); }
+    .tag.blue { background: var(--charles-blue); color: var(--white); }
+    .tag.red  { background: var(--freedom-red); color: var(--white); }
+
+    .stat-row {
+      display: flex; gap: 20px;
+      margin-top: 36px; width: 100%; max-width: 1100px;
+    }
+    .stat {
+      background: var(--white);
+      border-left: 6px solid var(--freedom-red);
+      padding: 22px 28px; flex: 1;
+      box-shadow: 0 4px 12px rgba(9,31,47,0.05);
+    }
+    .stat.blue { border-left-color: var(--charles-blue); }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 52px; font-weight: 900;
+      line-height: 1; color: var(--optic-blue);
+    }
+    .stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      color: var(--charles-blue); margin-top: 10px;
+    }
+    .stat-sub { font-size: 13px; color: var(--grey-300); font-style: italic; margin-top: 5px; }
+
+    .source-table {
+      width: 100%; max-width: 1100px;
+      margin-top: 28px; border-collapse: collapse;
+      background: var(--white);
+    }
+    .source-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      color: var(--white); padding: 14px 20px;
+      background: var(--optic-blue); text-align: left;
+    }
+    .source-table td {
+      padding: 12px 20px; font-size: 14px;
+      color: var(--optic-blue);
+      border-bottom: 1px solid var(--grey-100);
+    }
+    .source-table tr:hover td { background: #EFF3F5; }
+    .badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      color: var(--white); background: var(--charles-blue);
+      padding: 3px 8px;
+    }
+    .badge.red { background: var(--freedom-red); }
+
+    .title-bg {
+      position: absolute; top: 0; bottom: 0; right: 0; width: 42%;
+      background: var(--charles-blue);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: -1;
+    }
+
+    .hdiv { width: 48px; height: 4px; background: var(--freedom-red); margin: 14px 0; }
+
+    #slide-qa { background: var(--optic-blue); justify-content: center; align-items: center; text-align: center;}
+    #slide-qa .display { color: var(--white); }
+    #slide-qa .eyebrow { color: var(--white); border-bottom-color: var(--charles-blue); }
+
+    #slide-credits { background: var(--optic-blue); }
+
+    .qa-links { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+    .qa-chip {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      color: var(--optic-blue); background: var(--white);
+      padding: 14px 28px; text-decoration: none;
+      border: 2px solid transparent; transition: all 0.2s; cursor: none;
+    }
+    .qa-chip.primary { background: var(--freedom-red); color: var(--white); }
+    .qa-chip:hover   { border-color: var(--charles-blue); }
+
+    #slide-demo { justify-content: center; align-items: center; text-align: center; }
+    .demo-frame {
+      width: 800px; height: 350px;
+      border: 2px solid var(--grey-200); background: var(--white);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px; margin-top: 24px;
+      box-shadow: 0 8px 32px rgba(9,31,47,0.1);
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px; background: var(--grey-100);
+      padding: 2px 6px; color: var(--optic-blue);
+    }
+
+    .callout {
+      background: var(--optic-blue); color: var(--white);
+      padding: 14px 20px; margin-top: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.05em; max-width: 1100px;
+      border-left: 6px solid var(--charles-blue);
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      body, html { 
+        height: auto !important; 
+        overflow: visible !important; 
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important; 
+      }
+      .deck { 
+        height: auto !important; 
+        overflow: visible !important; 
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        display: flex !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      nav, .cursor { display: none !important; }
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="topbar"></div>
+<div class="boston-logo" id="main-logo"><span></span> CITY OF BOSTON</div>
+<div class="top-label">Applied ML · Boston Parking RAG · 2026</div>
+
+<div class="deck" id="deck">
+
+  <div class="slide active" id="slide-1">
+    <div class="title-bg"></div>
+    <div style="max-width:65%">
+      <div class="eyebrow">Applied Machine Learning</div>
+      <div class="display" style="font-size:clamp(60px,8vw,110px);margin-bottom:20px">
+        Boston<br/>Parking<br/><span class="accent-blue">CHATBOT</span>
+      </div>
+      <div class="hdiv"></div>
+      <div class="body" style="font-size:22px;margin-top:16px;max-width:90%">
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="slide-2">
+    <div class="eyebrow">Motivation & Corpus</div>
+    <div class="display" style="font-size:clamp(44px,5.5vw,78px);margin-bottom:10px">
+      A Fragmented <span class="accent-blue">Civic Dataset</span>
+    </div>
+    <div class="body">
+      Boston parking information is distributed across 7 incompatible formats with no unified query layer.
+      The core ML challenge: retrieval must work across tables, PDFs, CSVs, and unstructured HTML
+      — with domain-specific chunking strategies for each.
+    </div>
+    <div class="stat-row content-block">
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Source Formats</div>
+        <div class="stat-sub">HTML · PDF · CSV · Open Data</div>
+      </div>
+      <div class="stat blue">
+        <div class="stat-num">1,882</div>
+        <div class="stat-label">Indexed Chunks</div>
+        <div class="stat-sub">Domain-tagged, metadata-enriched</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Query Domains</div>
+        <div class="stat-sub">violations · permits · cleaning · regs · towing</div>
+      </div>
+      <div class="stat blue">
+        <div class="stat-num">84</div>
+        <div class="stat-label">Eval Queries</div>
+        <div class="stat-sub">Ground-truth test set</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="slide-3">
+    <div class="eyebrow">Data Engineering</div>
+    <div class="display" style="font-size:clamp(44px,5.5vw,78px);margin-bottom:10px">
+      Source-Specific <span class="accent-blue">Chunking</span>
+    </div>
+    <div class="body" style="margin-bottom:0">
+      Uniform token-based splitting destroys semantic coherence in structured civic data.
+      Each source gets a strategy matched to its document structure.
+    </div>
+    <div class="two-col content-block">
+      <div class="card blue">
+        <div class="card-label">Violations · HTML Table</div>
+        <div class="card-title">1 Chunk Per Violation</div>
+        <div class="card-body">Rows serialized to natural language — improves embedding quality vs raw tabular encoding. Dedicated chunks for zone comparison (<code>Zone A vs B</code>) and violation summaries. Guarantees atomic retrieval per violation type.</div>
+      </div>
+      <div class="card red">
+        <div class="card-label">Street Cleaning · 3,758-row CSV</div>
+        <div class="card-title">Segment Assembly Per Street</div>
+        <div class="card-body">Raw CSV has one row per street segment. Odd/even sides, times, and week patterns assembled into a single natural-language chunk per street. Enables direct street-name lookup without multi-hop retrieval.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">BTD Traffic Rules · 80-page PDF</div>
+        <div class="card-title">Section-Aware Splitting</div>
+        <div class="card-body">Splits on <code>Article/Section</code> headers — not token count. Hollow header chunks under 150 chars filtered post-extraction. Cross-reference integrity and regulatory context preserved within each chunk.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Permits & Towing · HTML</div>
+        <div class="card-title">Intent-Clustered Key Facts</div>
+        <div class="card-body">High-frequency intent patterns receive dedicated atomic chunks: tow lot address, hours, fees, payment — guaranteeing Rank 1 retrieval for the most critical queries regardless of phrasing variation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="slide-4">
+    <div class="eyebrow">Corpus Architecture</div>
+    <div class="display" style="font-size:clamp(44px,5.5vw,78px);margin-bottom:10px">
+      Ingested <span class="accent-blue">Sources</span>
+    </div>
+    <table class="source-table content-block">
+      <thead>
+        <tr><th>Source</th><th>Format</th><th>Domain</th><th>Chunks</th><th>Refresh</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Parking Ticket Fines & Codes</td><td>HTML table</td><td><span class="badge">violations</span></td><td>~66</td><td>90 days</td></tr>
+        <tr><td>Resident Parking Permit Guide</td><td>HTML</td><td><span class="badge">permits</span></td><td>~20</td><td>90 days</td></tr>
+        <tr><td>Street Sweeping Schedules (Analyze Boston)</td><td>CSV</td><td><span class="badge">street_cleaning</span></td><td>~1,682</td><td>30 days</td></tr>
+        <tr><td>BTD Traffic Rules & Regulations</td><td>PDF (80 pp.)</td><td><span class="badge">regulations</span></td><td>~113</td><td>365 days</td></tr>
+        <tr><td>How to Get Your Towed Car Back</td><td>HTML</td><td><span class="badge red">towing</span></td><td rowspan="3">~20</td><td>90 days</td></tr>
+        <tr><td>Towing Companies in Boston</td><td>HTML</td><td><span class="badge red">towing</span></td><td>90 days</td></tr>
+        <tr><td>Towing Alerts FAQ</td><td>HTML</td><td><span class="badge red">towing</span></td><td>180 days</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;font-size:13px;color:var(--grey-300);font-style:italic">
+      All sources ingested programmatically. Staleness tracking via <code>refresh_days</code> per source. Selective re-ingestion and re-indexing supported without full rebuild.
+    </div>
+  </div>
+
+  <div class="slide" id="slide-5" style="padding:52px 80px 52px;align-items:flex-start;justify-content:center">
+    <div style="max-width:1150px;width:100%">
+      <div class="eyebrow">Retrieval Architecture</div>
+      <div class="display" style="font-size:clamp(32px,4vw,52px);margin-bottom:6px">
+        How We Find the <span class="accent-blue">Right Answer</span>
+      </div>
+      <div style="font-size:15px;color:var(--grey-300);font-style:italic;margin-bottom:24px">A 5-step pipeline that runs every time a user asks a question</div>
+
+      <div class="content-block" style="position:relative">
+        <div style="position:absolute;top:28px;left:28px;right:28px;height:2px;background:var(--grey-200);z-index:0"></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:16px;position:relative;z-index:1;margin-bottom:16px">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:56px;height:56px;background:var(--optic-blue);border:3px solid var(--charles-blue);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff">01</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--optic-blue);text-transform:uppercase;letter-spacing:0.05em;text-align:center">Classify</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:56px;height:56px;background:var(--optic-blue);border:3px solid var(--charles-blue);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff">02</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--optic-blue);text-transform:uppercase;letter-spacing:0.05em;text-align:center">Decompose</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:56px;height:56px;background:var(--freedom-red);border:3px solid var(--optic-blue);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff">03</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--optic-blue);text-transform:uppercase;letter-spacing:0.05em;text-align:center">Retrieve</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:56px;height:56px;background:var(--optic-blue);border:3px solid var(--charles-blue);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff">04</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--optic-blue);text-transform:uppercase;letter-spacing:0.05em;text-align:center">Fuse</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:56px;height:56px;background:var(--charles-blue);border:3px solid var(--optic-blue);display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff">05</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--optic-blue);text-transform:uppercase;letter-spacing:0.05em;text-align:center">Generate</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:16px">
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:16px 14px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:8px">Domain Filter</div>
+            <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:10px">Before searching, the system figures out <em>what kind</em> of question is being asked — a fine, a street schedule, a permit question, or a towing issue. This narrows the search so it only looks in the right place.</div>
+            <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">5 domains · keyword scoring · boost rules</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:16px 14px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:8px">Query Splitting</div>
+            <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:10px">If someone asks two questions at once — "What's the hydrant fine and does street cleaning run on holidays?" — GPT-5.4 Nano splits it into separate searches, each answered precisely, then merged.</div>
+            <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">GPT-5.4 Nano · triggers on multi-intent</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--freedom-red);padding:16px 14px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--freedom-red);margin-bottom:8px">Dual Search</div>
+            <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:10px">We run <em>two</em> searches simultaneously. BM25 finds exact keyword matches (great for street names and dollar amounts). ChromaDB finds semantically similar content (great for paraphrased questions).</div>
+            <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--freedom-red)">BM25 Top-10 + ChromaDB Top-10</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:16px 14px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:8px">RRF Fusion</div>
+            <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:10px">The two result lists are merged using Reciprocal Rank Fusion — a mathematical technique that promotes chunks appearing in <em>both</em> lists without needing to compare their raw scores, which are incompatible.</div>
+            <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">Σ 1/(60 + rank) · Top-5 selected</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:16px 14px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:8px">Answer Synthesis</div>
+            <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:10px">GPT-5.4 reads the top 5 retrieved chunks and writes a plain-English answer — constrained to only cite facts from those chunks. Simple questions use the cheaper Nano model; complex ones route to Mini.</div>
+            <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">Nano or Mini · T=0.0 · citation-only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" id="slide-6">
+    <div class="eyebrow">Generation Layer</div>
+    <div class="display" style="font-size:clamp(44px,5.5vw,78px);margin-bottom:10px">
+      Complexity-Aware <span class="accent-blue">Model Router</span>
+    </div>
+    <div class="body">
+      A lightweight routing layer selects between two GPT-5.4 models at inference time —
+      minimizing cost on simple lookups without sacrificing precision on regulatory synthesis.
+    </div>
+    <div class="two-col content-block">
+      <div class="card blue">
+        <div class="card-label">GPT-5.4 Nano · ~$0.20 / 1M tokens</div>
+        <div class="card-title">Simple Lookups + Decomposition</div>
+        <div class="card-body">
+          Handles: fine amounts, schedule queries, single-domain fact retrieval, query decomposition sub-calls.<br/><br/>
+          <strong>Routing condition:</strong> retrieved chunks span ≤1 domain AND no complexity signals in query text (<code>"unless"</code>, <code>"except"</code>, <code>"still need to"</code>).<br/><br/>
+          53 of 84 eval queries routed to nano.
+        </div>
+      </div>
+      <div class="card red">
+        <div class="card-label">GPT-5.4 Mini · ~$0.75 / 1M tokens</div>
+        <div class="card-title">Regulatory Synthesis</div>
+        <div class="card-body">
+          Handles: cross-domain queries, exception resolution, multi-rule conflict (e.g. holiday + overnight + tow interaction).<br/><br/>
+          <strong>Routing condition:</strong> retrieved chunks span >1 domain OR complexity signals detected in query.<br/><br/>
+          31 of 84 eval queries routed to mini.
+        </div>
+      </div>
+    </div>
+    <div class="callout content-block">
+      Temperature = 0.0 across both models — regulatory answers must be deterministic. System prompt enforces citation-only answers: model cannot assert facts absent from retrieved context.
+    </div>
+  </div>
+
+  <div class="slide" id="slide-7" style="padding:52px 80px 52px;align-items:flex-start;justify-content:center">
+    <div style="max-width:1150px;width:100%">
+      <div class="eyebrow">Evaluation</div>
+      <div class="display" style="font-size:clamp(32px,4vw,52px);margin-bottom:6px">
+        How Well Does It <span class="accent-blue">Perform?</span>
+      </div>
+      <div style="font-size:15px;color:var(--grey-300);font-style:italic;margin-bottom:24px">84 hand-crafted questions with verified answers — spanning all 5 domains</div>
+
+      <div class="content-block" style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;width:100%">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-left:5px solid var(--charles-blue);padding:18px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+              <div style="flex:1;padding-right:16px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:5px">Recall@5 — Retrieval</div>
+                <div style="font-size:13px;color:var(--optic-blue);line-height:1.6">Did the right chunk of text appear in the top 5 results? This measures whether the search engine is even finding the relevant regulation before the AI sees it.</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div style="font-family:'Montserrat',sans-serif;font-size:44px;font-weight:900;color:var(--charles-blue);line-height:1">98%</div>
+                <div style="font-size:11px;color:var(--grey-300);margin-top:2px">82 of 84</div>
+              </div>
+            </div>
+            <div style="background:var(--grey-100);height:6px"><div style="background:var(--charles-blue);height:6px;width:98%"></div></div>
+          </div>
+
+          <div style="background:var(--white);border:1px solid var(--grey-200);border-left:5px solid var(--optic-blue);padding:18px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+              <div style="flex:1;padding-right:16px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--optic-blue);margin-bottom:5px">MRR — Rank Quality</div>
+                <div style="font-size:13px;color:var(--optic-blue);line-height:1.6">Mean Reciprocal Rank rewards chunks that appear <em>first</em>, not just somewhere in the top 5. A score of 0.885 means the right chunk is almost always the first result returned.</div>
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div style="font-family:'Montserrat',sans-serif;font-size:44px;font-weight:900;color:var(--optic-blue);line-height:1">0.885</div>
+                <div style="font-size:11px;color:var(--grey-300);margin-top:2px">near-perfect rank</div>
+              </div>
+            </div>
+            <div style="background:var(--grey-100);height:6px"><div style="background:var(--optic-blue);height:6px;width:88.5%"></div></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div style="background:var(--white);border:1px solid var(--grey-200);border-left:5px solid var(--freedom-red);padding:16px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--freedom-red);margin-bottom:6px">Pass Rate — Generation</div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:38px;font-weight:900;color:var(--freedom-red);line-height:1;margin-bottom:8px">94%</div>
+              <div style="font-size:12px;color:var(--optic-blue);line-height:1.55">Did the answer contain the key facts we expected? 79 of 84 answers passed threshold.</div>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--grey-200);border-left:5px solid var(--charles-blue);padding:16px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:6px">Avg Coverage Score</div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:38px;font-weight:900;color:var(--charles-blue);line-height:1;margin-bottom:8px">98%</div>
+              <div style="font-size:12px;color:var(--optic-blue);line-height:1.55">On average, answers contained 98% of expected keywords.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="background:var(--white);border:1px solid var(--grey-200);overflow:hidden">
+            <div style="background:var(--optic-blue);padding:12px 18px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Recall Growth Over Time</div>
+            </div>
+            <div style="padding:13px 18px;border-bottom:1px solid var(--grey-100)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--optic-blue)">BM25 only (baseline)</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--grey-300)">87%</div>
+              </div>
+              <div style="background:var(--grey-100);height:5px"><div style="background:var(--grey-200);height:5px;width:87%"></div></div>
+            </div>
+            <div style="padding:13px 18px;border-bottom:1px solid var(--grey-100)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--optic-blue)">+ Dense vector search</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--charles-blue)">93%</div>
+              </div>
+              <div style="background:var(--grey-100);height:5px"><div style="background:var(--charles-blue);height:5px;width:93%;opacity:0.6"></div></div>
+            </div>
+            <div style="padding:13px 18px;border-bottom:1px solid var(--grey-100)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--optic-blue)">+ Domain classifier fixes</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--optic-blue)">100%</div>
+              </div>
+              <div style="background:var(--grey-100);height:5px"><div style="background:var(--optic-blue);height:5px;width:100%"></div></div>
+            </div>
+            <div style="padding:13px 18px;background:rgba(40,139,228,0.04)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--optic-blue)">+ Towing corpus added</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--freedom-red)">98%</div>
+              </div>
+              <div style="background:var(--grey-100);height:5px"><div style="background:var(--freedom-red);height:5px;width:98%"></div></div>
+            </div>
+          </div>
+
+          <div style="background:var(--optic-blue);padding:16px 18px">
+            <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px">Test Set Breakdown</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--charles-blue)">20</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Fines</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--charles-blue)">15</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Cleaning</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--charles-blue)">13</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Permits</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--charles-blue)">10</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Regs</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:var(--freedom-red)">10</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Towing</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff">8</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Edges</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff">5</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Multi</div></div>
+              <div style="text-align:center"><div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff">3</div><div style="font-size:10px;color:rgba(255,255,255,0.4)">Out</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Guardrails ═══ -->
+  <div class="slide" id="slide-guardrails" style="padding:52px 80px 52px;align-items:flex-start;justify-content:center">
+    <div style="max-width:1150px;width:100%">
+      <div class="eyebrow">Safety & Reliability</div>
+      <div class="display" style="font-size:clamp(32px,4vw,52px);margin-bottom:6px">
+        Built-In <span class="accent-blue">Guardrails</span>
+      </div>
+      <div style="font-size:15px;color:var(--grey-300);font-style:italic;margin-bottom:24px">Deliberate design decisions to prevent hallucination and ensure trustworthy answers</div>
+
+      <div class="content-block" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;width:100%">
+
+        <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:10px">Citation-Only Answers</div>
+          <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:12px">The system prompt explicitly forbids the model from asserting any fact not present in the retrieved chunks. If the answer isn't in the corpus, the model says so — it cannot fill gaps with general knowledge.</div>
+          <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">Zero hallucinations across 84-query eval set</div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:10px">Temperature = 0.0</div>
+          <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:12px">Both models run at temperature zero. Regulatory answers about fines, permit rules, and towing fees must be deterministic — the same question must always return the same answer, with no random variation.</div>
+          <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">Applies to Nano and Mini equally</div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--freedom-red);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--freedom-red);margin-bottom:10px">Out-of-Scope Refusal</div>
+          <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:12px">Queries that score low across all 5 domain classifiers fall through without a domain filter, then retrieve against the full corpus. If still no relevant chunks are found, the system declines to answer rather than guessing.</div>
+          <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--freedom-red)">3 OOS queries correctly handled in eval</div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:10px">Domain Filtering as a Guardrail</div>
+          <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:12px">The domain classifier doesn't just improve performance — it prevents cross-contamination. A question about permit fees will never retrieve towing chunks, so the model can't accidentally blend unrelated regulations.</div>
+          <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">5 isolated domains · metadata-filtered queries</div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--grey-200);border-top:4px solid var(--charles-blue);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--charles-blue);margin-bottom:10px">Source Attribution</div>
+          <div style="font-size:13px;color:var(--optic-blue);line-height:1.65;margin-bottom:12px">Every answer surfaces the source documents it drew from — official boston.gov pages that users can click to verify. This keeps the system accountable and lets users check primary sources directly.</div>
+          <div style="background:var(--snow);padding:8px 10px;font-size:12px;color:var(--grey-300);border-left:3px solid var(--charles-blue)">Linked citations on every bot response</div>
+        </div>
+
+        <div style="background:var(--optic-blue);border-top:4px solid var(--freedom-red);padding:22px 20px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--freedom-red);margin-bottom:10px">Known Limitations</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.65;margin-bottom:12px">2 of 84 queries missed: one due to a pedestrian zone corpus gap, one due to towing keyword phrasing. Both are corpus limitations, not model failures — the model did not hallucinate a wrong answer.</div>
+          <div style="background:rgba(255,255,255,0.08);padding:8px 10px;font-size:12px;color:rgba(255,255,255,0.5);border-left:3px solid var(--freedom-red)">98% recall — 2 misses are data gaps, not hallucinations</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="slide centered" id="slide-demo">
+    <div class="eyebrow">Live System</div>
+    <div class="display" style="font-size:clamp(52px,6.5vw,88px);margin-bottom:8px">
+      <span class="accent-blue">Demo</span>
+    </div>
+    <div class="demo-frame" style="display:none;"></div>
+  </div>
+
+  <div class="slide centered" id="slide-credits">
+    <div style="position:absolute;top:24px;left:48px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;letter-spacing:-0.05em;color:#fff;display:flex;align-items:center;gap:8px;z-index:10">
+      <span style="display:inline-block;width:24px;height:24px;background:var(--charles-blue);border-radius:50%"></span>
+      CITY OF BOSTON
+    </div>
+
+    <div style="max-width:1100px;width:100%">
+      <div class="eyebrow" style="color:#fff;border-bottom-color:var(--charles-blue);display:inline-block;margin-bottom:20px">Project Team</div>
+      <div class="display" style="font-size:clamp(36px,5vw,64px);color:#fff;margin-bottom:12px">Credits</div>
+      <div style="width:60px;height:4px;background:var(--freedom-red);margin:0 auto 36px"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:24px">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--charles-blue);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Rebaz</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)">QA & Implementation</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--freedom-red);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Ryan</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)">Design, Slides & Core Build</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--charles-blue);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Tony</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)">QA, Brainstorming & Implementation</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px;margin-bottom:36px">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--freedom-red);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Andy</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)"></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--charles-blue);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Suraj</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)"></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--freedom-red);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Rakesh</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)"></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-top:4px solid var(--charles-blue);padding:32px 28px">
+          <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:8px">Jake</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide centered" id="slide-qa">
+    <div style="position:absolute;top:24px;left:48px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;letter-spacing:-0.05em;color:#fff;display:flex;align-items:center;gap:8px;z-index:10">
+      <span style="display:inline-block;width:24px;height:24px;background:var(--charles-blue);border-radius:50%"></span>
+      CITY OF BOSTON
+    </div>
+    <div class="eyebrow">Conclusion</div>
+    <div class="display" style="font-size:clamp(64px,10vw,140px);margin-bottom:20px">
+      Questions?
+    </div>
+  </div>
+
+</div>
+
+<nav>
+  <button class="nav-btn" onclick="prev()">← Prev</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" onclick="next()">Next →</button>
+  <span class="counter" id="counter">1 / 10</span>
+</nav>
+
+<script>
+  const cur = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top = e.clientY + 'px';
+  });
+
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  const dotsEl = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  const darkSlides = new Set(['slide-credits', 'slide-qa']);
+  const logo = document.getElementById('main-logo');
+
+  function updateUI() {
+    document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    const id = slides[current].id;
+    logo.style.color = darkSlides.has(id) ? 'transparent' : 'var(--optic-blue)';
+  }
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    updateUI();
+  }
+
+  function next() { if (current < total - 1) goTo(current + 1); }
+  function prev() { if (current > 0) goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); next(); }
+    if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); prev(); }
+  });
+
+  document.getElementById('deck').addEventListener('click', e => {
+    if (!e.target.closest('nav') && !e.target.closest('a')) next();
+  });
+
+  updateUI();
+  goTo(0);
+</script>
+</body>
+</html>

@@ -6,543 +6,518 @@
   <title>Boston Parking Assistant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Reset & Variables ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:      #0a1628;
-      --navy-mid:  #112240;
-      --navy-light:#1a3358;
-      --gold:      #c9a84c;
-      --gold-light:#e2c46e;
-      --white:     #f4f1eb;
-      --white-dim: #b8b0a0;
-      --red:       #c0392b;
-      --border:    rgba(201,168,76,0.18);
-      --grid-color:rgba(201,168,76,0.04);
-      --shadow:    0 8px 40px rgba(0,0,0,0.4);
-      --radius:    3px;
-      --font-head: 'Barlow Condensed', sans-serif;
-      --font-body: 'Crimson Pro', Georgia, serif;
+      --optic-blue:   #152C40;
+      --charles-blue: #288BE4;
+      --freedom-red:  #E64B3D;
+      --snow:         #F8F9FA;
+      --white:        #FFFFFF;
+      --grey-100:     #E0E6E8;
+      --grey-200:     #C8D3D9;
+      --grey-300:     #828D95;
+      --font-head:    'Montserrat', sans-serif;
+      --font-body:    'Lora', Georgia, serif;
     }
 
     html, body {
-      height: 100%;
-      background: var(--navy);
-      color: var(--white);
+      height: 100%; overflow: hidden; cursor: none;
+      background: var(--white);
+      color: var(--optic-blue);
       font-family: var(--font-body);
-      font-size: 17px;
-      line-height: 1.6;
-      overflow: hidden;
     }
 
-    /* ── Grid Background ───────────────────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: 0;
+    .cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--freedom-red); border-radius: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
     }
 
-    /* ── Layout ────────────────────────────────────────────────────── */
-    .app {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      height: 100vh;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Boston.gov top stripe */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 6px; background: var(--optic-blue);
+      z-index: 200; border-bottom: 3px solid var(--charles-blue);
     }
 
-    /* ── Header ────────────────────────────────────────────────────── */
-    header {
-      padding: 28px 0 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-end;
-      gap: 20px;
+    /* ── Shell: sidebar + main ── */
+    .shell {
+      position: relative; z-index: 1;
+      display: flex; height: 100vh; padding-top: 9px;
     }
 
-    .seal {
-      width: 52px;
-      height: 52px;
-      flex-shrink: 0;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
+    /* ── Left sidebar ── */
+    .sidebar {
+      width: 90px; flex-shrink: 0;
+      background: var(--optic-blue);
+      display: flex; flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: var(--navy-mid);
-      animation: sealPulse 4s ease-in-out infinite;
+      padding: 0;
+      border-right: 1px solid var(--grey-200);
     }
 
-    @keyframes sealPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.2); }
-      50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0); }
+    .sidebar-logo {
+      width: 100%; height: 90px;
+      background: var(--optic-blue);
+      display: flex; align-items: center; justify-content: center;
+      cursor: none; flex-shrink: 0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .sidebar-logo svg { 
+      width: 40px; height: 50px; 
     }
 
-    .seal svg { width: 28px; height: 28px; }
-
-    .header-text { flex: 1; }
-
-    .header-eyebrow {
+    .sidebar-label {
       font-family: var(--font-head);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 2px;
+      font-size: 14px; font-weight: 700;
+      color: var(--white);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      margin-top: 30px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .sidebar-divider {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.2); margin: 20px 0;
+    }
+
+    .sidebar-domains {
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+      margin-top: 20px; width: 100%;
+    }
+
+    .domain-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+
+    .sidebar-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--charles-blue);
+    }
+
+    .sidebar-text {
+      font-family: var(--font-head); font-size: 10px; font-weight: 500;
+      color: var(--white); text-align: center;
+    }
+
+    /* ── Main column ── */
+    .main {
+      flex: 1; display: flex; flex-direction: column; min-width: 0;
+      background: var(--white);
+    }
+
+    /* ── Header Area ── */
+    .top-header {
+      padding: 24px 32px 16px;
+      border-bottom: 1px solid var(--grey-100);
+      background: var(--white);
+    }
+
+    .boston-wm {
+      display: flex; align-items: baseline; gap: 16px;
+    }
+
+    .boston-wm-city {
+      font-family: var(--font-body);
+      font-size: 42px; font-weight: 700;
+      color: var(--optic-blue);
+      border-bottom: 5px solid var(--freedom-red);
+      line-height: 1; padding-bottom: 6px;
+    }
+
+    .boston-wm-dept {
+      font-family: var(--font-body);
+      font-size: 20px; font-weight: 400;
+      color: var(--optic-blue);
+    }
+
+    .app-header {
+      padding: 24px 32px 10px;
+      display: flex; flex-direction: column; gap: 8px;
+      flex-shrink: 0; background: var(--white);
+    }
+
+    .app-title-row {
+      display: flex; justify-content: space-between; align-items: center;
     }
 
     h1 {
       font-family: var(--font-head);
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 1;
+      font-size: 28px; font-weight: 700;
+      color: var(--optic-blue);
     }
 
-    .header-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-head);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      color: var(--white-dim);
-      text-transform: uppercase;
+    .header-sub {
+      font-family: var(--font-body);
+      font-size: 16px; color: var(--optic-blue);
+    }
+
+    .live-badge {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-head); font-size: 12px; font-weight: 700;
+      background: #F0F4F8; color: var(--optic-blue);
+      padding: 6px 12px; border-radius: 16px;
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #2ecc71;
-      animation: blink 2s ease-in-out infinite;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--optic-blue);
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.3; }
+    .messages-title {
+      font-family: var(--font-head); font-size: 20px; font-weight: 700;
+      color: var(--optic-blue); padding: 10px 32px;
     }
 
-    /* ── Messages ──────────────────────────────────────────────────── */
+    /* ── Messages Container ── */
+    .messages-container {
+      flex: 1; padding: 0 32px; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+
     .messages {
-      overflow-y: auto;
-      padding: 28px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--navy-light) transparent;
+      flex: 1; overflow-y: auto; padding: 32px;
+      background: #F4F7F8; border: 1px solid var(--grey-100);
+      border-radius: 8px;
+      display: flex; flex-direction: column; gap: 16px;
+      scrollbar-width: thin; scrollbar-color: var(--grey-200) transparent;
+      position: relative;
     }
+    
+    .messages::-webkit-scrollbar { width: 5px; }
+    .messages::-webkit-scrollbar-thumb { background: var(--grey-200); border-radius: 4px; }
 
-    .messages::-webkit-scrollbar { width: 4px; }
-    .messages::-webkit-scrollbar-track { background: transparent; }
-    .messages::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 2px; }
-
-    /* Welcome state */
+    /* ── Welcome state ── */
     .welcome {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-      gap: 24px;
-      animation: fadeUp 0.6s ease both;
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      flex: 1; text-align: center; gap: 0;
+      animation: fadeUp 0.5s ease both;
+      padding: 20px 0;
+    }
+    
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
-    .welcome-icon {
-      width: 72px;
-      height: 72px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--navy-mid);
+    /* Replaced round emblem with typography layout matching image */
+    .welcome-emblem {
+      display: flex; align-items: baseline; justify-content: center;
+      margin-bottom: 32px; gap: 12px;
     }
 
-    .welcome-icon svg { width: 36px; height: 36px; opacity: 0.7; }
+    .we-city {
+      font-family: var(--font-head); font-size: 52px; font-weight: 800;
+      color: var(--optic-blue); letter-spacing: 0.02em;
+    }
+
+    .we-of {
+      font-family: var(--font-body); font-size: 38px; font-style: italic;
+      color: var(--optic-blue);
+    }
+
+    .we-boston-col {
+      display: flex; flex-direction: column;
+    }
+
+    .we-boston {
+      font-family: var(--font-head); font-size: 52px; font-weight: 800;
+      color: var(--optic-blue); line-height: 1; letter-spacing: 0.02em;
+    }
+
+    .we-underline {
+      height: 5px; background: var(--freedom-red); width: 100%; margin-top: 6px;
+    }
 
     .welcome h2 {
-      font-family: var(--font-head);
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
+      font-family: var(--font-head); font-size: 32px; font-weight: 700;
+      color: var(--optic-blue); margin-bottom: 12px;
     }
 
     .welcome p {
-      font-size: 16px;
-      color: var(--white-dim);
-      max-width: 420px;
-      font-style: italic;
+      font-family: var(--font-body); font-size: 18px; color: var(--optic-blue);
+      margin-bottom: 32px;
     }
 
+    /* Pill-shaped suggestions */
     .suggestions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      max-width: 560px;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 12px; width: 100%; max-width: 800px;
     }
 
     .suggestion {
-      padding: 7px 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-family: var(--font-head);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white-dim);
-      cursor: pointer;
-      transition: all 0.2s;
+      padding: 10px 20px;
       background: transparent;
+      border: 1px solid var(--optic-blue);
+      border-radius: 24px;
+      font-family: var(--font-head); font-size: 13px; font-weight: 500;
+      color: var(--optic-blue); text-align: center;
+      cursor: none; transition: all 0.2s ease;
     }
-
+    
     .suggestion:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: rgba(201,168,76,0.05);
+      background: var(--optic-blue); color: var(--white);
     }
 
-    /* Message bubbles */
+    /* ── Chat messages ── */
     .message {
-      display: flex;
-      gap: 12px;
-      animation: fadeUp 0.3s ease both;
+      display: flex; gap: 12px; position: relative; z-index: 1;
+      animation: fadeUp 0.25s ease both;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
     .message.user { flex-direction: row-reverse; }
 
     .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-head);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-size: 10px; font-weight: 700;
     }
-
-    .avatar.bot {
-      background: var(--navy-mid);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-    }
-
-    .avatar.user-av {
-      background: var(--gold);
-      color: var(--navy);
-    }
+    .avatar.bot { background: var(--optic-blue); color: var(--white); }
+    .avatar.user-av { background: var(--charles-blue); color: var(--white); }
 
     .bubble {
-      max-width: 72%;
-      padding: 14px 18px;
-      border-radius: var(--radius);
-      font-size: 16px;
-      line-height: 1.65;
+      max-width: 75%; padding: 16px 20px;
+      font-size: 15px; line-height: 1.6; border-radius: 8px;
     }
-
     .message.bot .bubble {
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      color: var(--white);
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      color: var(--optic-blue);
       border-top-left-radius: 0;
     }
-
     .message.user .bubble {
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 400;
+      background: var(--optic-blue); color: var(--white);
       border-top-right-radius: 0;
     }
-
-    .bubble strong { font-weight: 600; }
-
-    .bubble ul {
-      margin: 8px 0 4px 16px;
-    }
-
+    .bubble strong { font-weight: 700; }
+    .bubble ul { margin: 8px 0 4px 16px; }
     .bubble ul li { margin-bottom: 4px; }
+    .bubble p { margin-bottom: 8px; }
+    .bubble p:last-child { margin-bottom: 0; }
 
     /* Sources */
     .sources {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid var(--grey-100);
+      display: flex; flex-wrap: wrap; gap: 8px;
     }
-
     .source-tag {
-      font-family: var(--font-head);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      text-decoration: none;
-      transition: opacity 0.2s;
+      font-family: var(--font-head); font-size: 10px; font-weight: 600;
+      color: var(--charles-blue); text-decoration: none;
+      background: rgba(40,139,228,0.1); padding: 4px 8px; border-radius: 4px;
+      transition: background 0.2s;
     }
+    a.source-tag:hover { background: rgba(40,139,228,0.2); }
 
-    a.source-tag:hover {
-      opacity: 1;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* Typing indicator */
+    /* Typing */
     .typing {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 14px 18px;
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      border-top-left-radius: 0;
-      width: fit-content;
+      display: flex; align-items: center; gap: 5px;
+      padding: 16px 20px; background: var(--white);
+      border: 1px solid var(--grey-200); border-radius: 8px;
+      border-top-left-radius: 0; width: fit-content;
     }
-
     .typing span {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.4;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--charles-blue); opacity: 0.4;
       animation: typingDot 1.2s ease-in-out infinite;
     }
-
     .typing span:nth-child(2) { animation-delay: 0.2s; }
     .typing span:nth-child(3) { animation-delay: 0.4s; }
-
     @keyframes typingDot {
-      0%, 60%, 100% { opacity: 0.4; transform: translateY(0); }
-      30%            { opacity: 1;   transform: translateY(-4px); }
+      0%,60%,100%{opacity:0.4;transform:translateY(0)}
+      30%{opacity:1;transform:translateY(-4px)}
     }
 
     /* Error */
     .error-bubble {
-      padding: 12px 16px;
-      background: rgba(192,57,43,0.12);
-      border: 1px solid rgba(192,57,43,0.3);
-      border-radius: var(--radius);
-      color: #e57373;
-      font-size: 14px;
-      font-family: var(--font-head);
-      letter-spacing: 0.04em;
+      padding: 14px 18px;
+      background: rgba(230,75,61,0.1); border-radius: 8px;
+      border: 1px solid rgba(230,75,61,0.3);
+      color: var(--freedom-red);
+      font-size: 14px; font-family: var(--font-head);
+      font-weight: 600;
     }
 
-    /* ── Input Area ────────────────────────────────────────────────── */
+    /* ── Input area ── */
     .input-area {
-      padding: 20px 0 28px;
-      border-top: 1px solid var(--border);
+      background: var(--white);
+      padding: 16px 32px 24px; flex-shrink: 0;
     }
 
-    .input-row {
-      display: flex;
-      gap: 10px;
-      align-items: flex-end;
-    }
+    .input-row { display: flex; gap: 12px; align-items: flex-end; }
 
     textarea {
-      flex: 1;
-      background: var(--navy-mid);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.5;
-      padding: 13px 16px;
-      resize: none;
-      min-height: 50px;
-      max-height: 140px;
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; background: var(--white);
+      border: 1px solid var(--optic-blue); border-radius: 6px;
+      color: var(--optic-blue); font-family: var(--font-body);
+      font-size: 16px; line-height: 1.5; padding: 14px 18px;
+      resize: none; min-height: 52px; max-height: 140px;
+      outline: none; transition: box-shadow 0.2s;
     }
-
-    textarea::placeholder { color: var(--white-dim); font-style: italic; }
-    textarea:focus { border-color: rgba(201,168,76,0.5); }
+    textarea::placeholder { color: var(--grey-300); font-style: normal; font-family: var(--font-head); font-size: 14px; }
+    textarea:focus { box-shadow: 0 0 0 2px rgba(21,44,64,0.1); }
 
     .send-btn {
-      width: 50px;
-      height: 50px;
-      flex-shrink: 0;
-      background: var(--gold);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
+      width: 65px; height: 52px; flex-shrink: 0;
+      background: var(--optic-blue); border-radius: 6px;
+      border: none; cursor: none; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
-
-    .send-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .send-btn:active { transform: translateY(0); }
-    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-    .send-btn svg { width: 18px; height: 18px; color: var(--navy); }
+    .send-btn:hover { background: var(--charles-blue); }
+    .send-btn:disabled { opacity: 0.5; }
+    .send-btn svg { width: 24px; height: 24px; color: var(--white); }
 
     .input-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .input-hint {
-      font-family: var(--font-head);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white-dim);
-      opacity: 0.5;
+      display: flex; justify-content: flex-end;
+      align-items: center; margin-top: 8px;
     }
 
     .model-badge {
-      font-family: var(--font-head);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.6;
-      padding: 3px 8px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
+      font-family: var(--font-head); font-size: 11px; font-weight: 600;
+      color: var(--optic-blue); background: #EAECEE; padding: 4px 10px;
+      border-radius: 12px; display: flex; align-items: center; gap: 6px;
     }
 
-    /* ── Divider ───────────────────────────────────────────────────── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--white-dim);
-      font-family: var(--font-head);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.4;
-      margin: 4px 0;
+    .model-badge svg { width: 12px; height: 12px; }
+
+    /* Footer links */
+    .footer-strip {
+      padding-top: 16px; margin-top: 12px;
+      border-top: 1px solid var(--grey-100);
+      min-height: 16px;
     }
 
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── Responsive ────────────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .app { padding: 0 16px; }
-      h1 { font-size: 20px; }
-      .seal { width: 40px; height: 40px; }
-      .bubble { max-width: 88%; font-size: 15px; }
-      .suggestions { flex-direction: column; align-items: stretch; }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .app-header, .messages-title, .messages-container, .input-area, .top-header { padding-left: 20px; padding-right: 20px; }
+      .boston-wm-city { font-size: 32px; }
+      h1 { font-size: 24px; }
+      .welcome h2 { font-size: 24px; }
+      .we-city, .we-boston { font-size: 36px; }
+      .we-of { font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-<div class="app">
+<div class="cursor" id="cursor"></div>
+<div class="topbar"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="seal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        <path d="M2 12h20"/>
-      </svg>
-    </div>
-    <div class="header-text">
-      <div class="header-eyebrow">City of Boston · Transportation Department</div>
-      <h1>Parking Assistant</h1>
-    </div>
-    <div class="header-status">
-      <div class="status-dot"></div>
-      Live
-    </div>
-  </header>
+<div class="shell">
 
-  <!-- Messages -->
-  <div class="messages" id="messages">
-    <div class="welcome" id="welcome">
-      <div class="welcome-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <path d="M3 9h18M9 21V9"/>
-        </svg>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+    </div>
+
+    <div class="sidebar-label">Boston · 2026</div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-domains">
+      <div class="domain-item">
+        <div class="sidebar-dot"></div>
+        <span class="sidebar-text">Violations</span>
       </div>
-      <h2>How can I help you park in Boston?</h2>
-      <p>Ask about fines, street cleaning schedules, resident permits, and parking regulations.</p>
-      <div class="suggestions">
-        <button class="suggestion" onclick="useSuggestion(this)">Hydrant fine</button>
-        <button class="suggestion" onclick="useSuggestion(this)">Street cleaning season</button>
-        <button class="suggestion" onclick="useSuggestion(this)">Get a resident permit</button>
-        <button class="suggestion" onclick="useSuggestion(this)">Double parking Zone A</button>
-        <button class="suggestion" onclick="useSuggestion(this)">Does street cleaning happen on holidays?</button>
-        <button class="suggestion" onclick="useSuggestion(this)">Overnight heavy vehicle</button>
+      <div class="domain-item">
+        <div class="sidebar-dot"></div>
+        <span class="sidebar-text">Permits</span>
+      </div>
+      <div class="domain-item">
+        <div class="sidebar-dot"></div>
+        <span class="sidebar-text">Street<br>Cleaning</span>
+      </div>
+      <div class="domain-item">
+        <div class="sidebar-dot"></div>
+        <span class="sidebar-text">Regulations</span>
+      </div>
+      <div class="domain-item">
+        <div class="sidebar-dot"></div>
+        <span class="sidebar-text">Towing</span>
       </div>
     </div>
-  </div>
+  </aside>
 
-  <!-- Input -->
-  <div class="input-area">
-    <div class="input-row">
-      <textarea
-        id="input"
-        placeholder="Ask about Boston parking rules, fines, or permits…"
-        rows="1"
-        onkeydown="handleKey(event)"
-        oninput="autoResize(this)"
-      ></textarea>
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"/>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-      </button>
-    </div>
-    <div class="input-meta">
-      <span class="input-hint">Enter to send · Shift+Enter for new line</span>
-      <span class="model-badge" id="modelBadge">GPT-5.4</span>
-    </div>
-  </div>
+  <div class="main">
 
+    <header class="top-header">
+      <div class="boston-wm">
+        <a class="boston-wm-city" href="/" onclick="resetChat(event)" title="Home" style="text-decoration: none; color: inherit;">Boston</a>
+        <span class="boston-wm-dept">Transportation Department</span>
+      </div>
+    </header>
+
+    <div class="app-header">
+      <div class="app-title-row">
+        <h1>Parking Assistant</h1>
+        <div class="live-badge">Live <div class="status-dot"></div></div>
+      </div>
+      <div class="header-sub">AI-Powered · Grounded in Official Sources</div>
+    </div>
+
+    <h2 class="messages-title">Messages</h2>
+
+    <div class="messages-container">
+      <div class="messages" id="messages">
+        <div class="welcome" id="welcome">
+          
+          <div class="welcome-emblem">
+            <span class="we-city">CITY</span>
+            <span class="we-of">of</span>
+            <div class="we-boston-col">
+              <span class="we-boston">BOSTON</span>
+              <div class="we-underline"></div>
+            </div>
+          </div>
+
+          <h2>Welcome</h2>
+          <p>How can I help you park in Boston?</p>
+
+          <div class="suggestions">
+            <button class="suggestion" onclick="useSuggestion(this)">What is the fine for parking near a fire hydrant?</button>
+            <button class="suggestion" onclick="useSuggestion(this)">When does street cleaning season start and end?</button>
+            <button class="suggestion" onclick="useSuggestion(this)">How do I get a resident parking permit?</button>
+            <button class="suggestion" onclick="useSuggestion(this)">Does street cleaning happen on holidays?</button>
+            <button class="suggestion" onclick="useSuggestion(this)">My car was towed — where do I go?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <textarea
+          id="input"
+          placeholder="Type your question about Boston parking here..."
+          rows="1"
+          onkeydown="handleKey(event)"
+          oninput="autoResize(this)"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+      <div class="input-meta">
+        <span class="model-badge" id="modelBadge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          GPT-5.4 Nano
+        </span>
+      </div>
+      <div class="footer-strip"></div>
+    </div>
+
+  </div>
 </div>
 
 <script>
@@ -551,219 +526,158 @@
   const inputEl = document.getElementById('input');
   const sendBtn = document.getElementById('sendBtn');
   const modelBadge = document.getElementById('modelBadge');
+  let conversationHistory = [], isLoading = false;
 
-  let conversationHistory = [];
-  let isLoading = false;
+  const cur = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  });
 
-  // ── Auto-resize textarea ──────────────────────────────────────────
   function autoResize(el) {
     el.style.height = 'auto';
     el.style.height = Math.min(el.scrollHeight, 140) + 'px';
   }
 
-  // ── Handle enter key ──────────────────────────────────────────────
   function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   }
 
-  // ── Use suggestion ────────────────────────────────────────────────
   function useSuggestion(btn) {
-    const text = btn.textContent.trim();
-    inputEl.value = text;
-    autoResize(inputEl);
-    inputEl.focus();
-    sendMessage();
+    inputEl.value = btn.textContent.trim();
+    autoResize(inputEl); inputEl.focus(); sendMessage();
   }
 
-  // ── Hide welcome ──────────────────────────────────────────────────
-  function hideWelcome() {
-    const welcome = document.getElementById('welcome');
-    if (welcome) welcome.remove();
-  }
+  function hideWelcome() { const w = document.getElementById('welcome'); if (w) w.remove(); }
+  function scrollToBottom() { messagesEl.scrollTop = messagesEl.scrollHeight; }
 
-  // ── Scroll to bottom ──────────────────────────────────────────────
-  function scrollToBottom() {
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-
-  // ── Add divider ───────────────────────────────────────────────────
-  function addDivider(label) {
-    const d = document.createElement('div');
-    d.className = 'divider';
-    d.textContent = label;
-    messagesEl.appendChild(d);
-  }
-
-  // ── Add message ───────────────────────────────────────────────────
   function addMessage(role, text, sources = [], model = '') {
-    const wrap = document.createElement('div');
-    wrap.className = `message ${role}`;
-
+    const wrap   = document.createElement('div'); wrap.className = `message ${role}`;
     const avatar = document.createElement('div');
     avatar.className = `avatar ${role === 'bot' ? 'bot' : 'user-av'}`;
     avatar.textContent = role === 'bot' ? 'BTD' : 'YOU';
-
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
+    const bubble = document.createElement('div'); bubble.className = 'bubble';
     bubble.innerHTML = formatText(text);
 
-    if (sources && sources.length > 0) {
-      const srcDiv = document.createElement('div');
-      srcDiv.className = 'sources';
+    if (sources?.length) {
+      const srcDiv = document.createElement('div'); srcDiv.className = 'sources';
+      const sourceUrls = {
+        'Boston Parking Ticket Fines and Codes': 'https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes',
+        'Boston Resident Parking Permit Guide': 'https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit',
+        'Boston Street Cleaning Rules': 'https://www.boston.gov/departments/public-works/street-sweeping-city',
+        'Analyze Boston Street Sweeping Schedules': 'https://data.boston.gov/dataset/street-sweeping-schedules',
+        'City of Boston Traffic Rules and Regulations (March 2025)': 'https://www.boston.gov/departments/transportation/city-boston-traffic-rules-and-regulations',
+        'Boston Towing Guide': 'https://www.boston.gov/departments/transportation/how-get-your-towed-car-back',
+        'Boston Towing Companies': 'https://www.boston.gov/departments/transportation/towing-companies-boston',
+        'Boston Towing Alerts': 'https://www.boston.gov/departments/transportation/towing-alerts-common-questions',
+      };
       sources.forEach(s => {
-        const sourceUrls = {
-          'Boston Parking Ticket Fines and Codes': 'https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes',
-          'Boston Resident Parking Permit Guide': 'https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit',
-          'Boston Street Cleaning Rules': 'https://www.boston.gov/departments/public-works/street-sweeping-city',
-          'Analyze Boston Street Sweeping Schedules': 'https://data.boston.gov/dataset/street-sweeping-schedules',
-          'City of Boston Traffic Rules and Regulations (March 2025)': 'https://www.boston.gov/departments/transportation/city-boston-traffic-rules-and-regulations',
-        };
         const url = sourceUrls[s];
         const tag = url
-          ? Object.assign(document.createElement('a'), { className: 'source-tag', textContent: s, href: url, target: '_blank', rel: 'noopener noreferrer' })
-          : Object.assign(document.createElement('span'), { className: 'source-tag', textContent: s });
+          ? Object.assign(document.createElement('a'), { className:'source-tag', textContent:s, href:url, target:'_blank', rel:'noopener noreferrer' })
+          : Object.assign(document.createElement('span'), { className:'source-tag', textContent:s });
         srcDiv.appendChild(tag);
       });
       bubble.appendChild(srcDiv);
     }
 
-    wrap.appendChild(avatar);
-    wrap.appendChild(bubble);
+    wrap.appendChild(avatar); wrap.appendChild(bubble);
     messagesEl.appendChild(wrap);
-
+    
+    // Update badge visually if needed
     if (model) {
-      const modelName = model.includes('nano') ? 'GPT-5.4 Nano'
-                      : model.includes('mini') ? 'GPT-5.4 Mini'
-                      : 'GPT-5.4';
-      modelBadge.textContent = modelName;
+      modelBadge.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> ${model.includes('nano') ? 'GPT-5.4 Nano' : model.includes('mini') ? 'GPT-5.4 Mini' : 'GPT-5.4'}`;
     }
-
     scrollToBottom();
-    return wrap;
   }
 
-  // ── Format text ───────────────────────────────────────────────────
   function formatText(text) {
-    // Bold **text**
     text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    // Bullet points
     const lines = text.split('\n');
-    let html = '';
-    let inList = false;
+    let html = '', inList = false;
     for (const line of lines) {
-      const trimmed = line.trim();
-      if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+      const t = line.trim();
+      if (t.startsWith('- ') || t.startsWith('• ')) {
         if (!inList) { html += '<ul>'; inList = true; }
-        html += `<li>${trimmed.slice(2)}</li>`;
+        html += `<li>${t.slice(2)}</li>`;
       } else {
         if (inList) { html += '</ul>'; inList = false; }
-        if (trimmed) html += `<p style="margin-bottom:6px">${trimmed}</p>`;
+        if (t) html += `<p>${t}</p>`;
       }
     }
     if (inList) html += '</ul>';
     return html;
   }
 
-  // ── Add typing indicator ──────────────────────────────────────────
   function addTyping() {
-    const wrap = document.createElement('div');
-    wrap.className = 'message bot';
-    wrap.id = 'typing';
-
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar bot';
-    avatar.textContent = 'BTD';
-
-    const typing = document.createElement('div');
-    typing.className = 'typing';
-    typing.innerHTML = '<span></span><span></span><span></span>';
-
-    wrap.appendChild(avatar);
-    wrap.appendChild(typing);
-    messagesEl.appendChild(wrap);
-    scrollToBottom();
+    const wrap = document.createElement('div'); wrap.className = 'message bot'; wrap.id = 'typing';
+    const av = document.createElement('div'); av.className = 'avatar bot'; av.textContent = 'BTD';
+    const t = document.createElement('div'); t.className = 'typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    wrap.appendChild(av); wrap.appendChild(t); messagesEl.appendChild(wrap); scrollToBottom();
   }
+  function removeTyping() { const t = document.getElementById('typing'); if (t) t.remove(); }
 
-  function removeTyping() {
-    const t = document.getElementById('typing');
-    if (t) t.remove();
-  }
-
-  // ── Send message ──────────────────────────────────────────────────
   async function sendMessage() {
     const query = inputEl.value.trim();
     if (!query || isLoading) return;
-
     hideWelcome();
-    isLoading = true;
-    sendBtn.disabled = true;
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
-
-    // Add user message
+    isLoading = true; sendBtn.disabled = true;
+    inputEl.value = ''; inputEl.style.height = 'auto';
     addMessage('user', query);
-    conversationHistory.push({ role: 'user', content: query });
-
-    // Add typing indicator
+    conversationHistory.push({ role:'user', content:query });
     addTyping();
-
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query,
-          conversation_history: conversationHistory.slice(-6),
-          top_k: 5,
-        }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query, conversation_history: conversationHistory.slice(-6), top_k: 5 }),
       });
-
       removeTyping();
-
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        throw new Error(err.detail || `Server error ${response.status}`);
-      }
-
+      if (!response.ok) { const e = await response.json().catch(()=>({})); throw new Error(e.detail || `Error ${response.status}`); }
       const data = await response.json();
-
       addMessage('bot', data.answer, data.sources, data.model_used);
-      conversationHistory.push({ role: 'assistant', content: data.answer });
-
-      // Keep history manageable
-      if (conversationHistory.length > 12) {
-        conversationHistory = conversationHistory.slice(-12);
-      }
-
+      conversationHistory.push({ role:'assistant', content:data.answer });
+      if (conversationHistory.length > 12) conversationHistory = conversationHistory.slice(-12);
     } catch (err) {
       removeTyping();
-      const wrap = document.createElement('div');
-      wrap.className = 'message bot';
-
-      const avatar = document.createElement('div');
-      avatar.className = 'avatar bot';
-      avatar.textContent = 'BTD';
-
-      const errBubble = document.createElement('div');
-      errBubble.className = 'error-bubble';
-      errBubble.textContent = err.message.includes('Failed to fetch')
-        ? 'Unable to connect to the server. Make sure the API is running on port 8000.'
+      const wrap = document.createElement('div'); wrap.className = 'message bot';
+      const av = document.createElement('div'); av.className = 'avatar bot'; av.textContent = 'BTD';
+      const eb = document.createElement('div'); eb.className = 'error-bubble';
+      eb.textContent = err.message.includes('Failed to fetch')
+        ? 'Unable to connect. Make sure the API is running on port 8000.'
         : `Error: ${err.message}`;
-
-      wrap.appendChild(avatar);
-      wrap.appendChild(errBubble);
-      messagesEl.appendChild(wrap);
-      scrollToBottom();
+      wrap.appendChild(av); wrap.appendChild(eb); messagesEl.appendChild(wrap); scrollToBottom();
     }
+    isLoading = false; sendBtn.disabled = false; inputEl.focus();
+  }
 
-    isLoading = false;
-    sendBtn.disabled = false;
-    inputEl.focus();
+  function resetChat(e) {
+    e.preventDefault();
+    conversationHistory = []; messagesEl.innerHTML = '';
+    const welcome = document.createElement('div');
+    welcome.className = 'welcome'; welcome.id = 'welcome';
+    welcome.innerHTML = `
+      <div class="welcome-emblem">
+        <span class="we-city">CITY</span>
+        <span class="we-of">of</span>
+        <div class="we-boston-col">
+          <span class="we-boston">BOSTON</span>
+          <div class="we-underline"></div>
+        </div>
+      </div>
+      <h2>Welcome</h2>
+      <p>How can I help you park in Boston?</p>
+      <div class="suggestions">
+        <button class="suggestion" onclick="useSuggestion(this)">What is the fine for parking near a fire hydrant?</button>
+        <button class="suggestion" onclick="useSuggestion(this)">When does street cleaning season start and end?</button>
+        <button class="suggestion" onclick="useSuggestion(this)">How do I get a resident parking permit?</button>
+        <button class="suggestion" onclick="useSuggestion(this)">Does street cleaning happen on holidays?</button>
+        <button class="suggestion" onclick="useSuggestion(this)">My car was towed — where do I go?</button>
+      </div>
+    `;
+    messagesEl.appendChild(welcome);
+    modelBadge.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> GPT-5.4 Nano`;
   }
 </script>
-
 </body>
 </html>

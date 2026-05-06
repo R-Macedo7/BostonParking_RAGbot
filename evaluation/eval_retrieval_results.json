@@ -1,8 +1,8 @@
 {
-  "recall_at_k": 1.0,
-  "mrr": 0.9666666666666667,
+  "recall_at_k": 0.9761904761904762,
+  "mrr": 0.8853174603174603,
   "top_k": 5,
-  "total_queries": 15,
+  "total_queries": 84,
   "results": [
     {
       "id": "v001",
@@ -50,11 +50,146 @@
       "chunks_retrieved": 5
     },
     {
-      "id": "p001",
-      "query": "How do I get a Boston resident parking permit?",
+      "id": "v006",
+      "query": "What is the fine for parking in a handicap-designated space in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v007",
+      "query": "How much is the fine for parking at a bus stop in Boston?",
       "recall_hit": true,
       "hit_rank": 1,
       "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v008",
+      "query": "What is the fine for parking in a loading zone in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v009",
+      "query": "How much is a ticket for parking on a crosswalk in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v010",
+      "query": "What is the fine for parking on a sidewalk in Boston?",
+      "recall_hit": true,
+      "hit_rank": 4,
+      "reciprocal_rank": 0.25,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v011",
+      "query": "How much is a double parking ticket in Zone B?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v012",
+      "query": "What is the fine for parking more than one foot from the curb?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v013",
+      "query": "How much is the fine for blocking a driveway in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v014",
+      "query": "What is the fine for parking in an electric vehicle only spot without an EV?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v015",
+      "query": "What is the fine for parking the wrong direction on a street in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v016",
+      "query": "How much is the fine for an unpaid parking meter in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v017",
+      "query": "What is the fine for parking within 20 feet of an intersection in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v018",
+      "query": "What is the fine for parking in a fire lane in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v019",
+      "query": "How much is a No Parking Zone A ticket in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "v020",
+      "query": "What is the fine for parking during a weather emergency in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p001",
+      "query": "How do I get a Boston resident parking permit?",
+      "recall_hit": true,
+      "hit_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
       "domain_detected": "permits",
       "chunks_retrieved": 5
     },
@@ -82,6 +217,87 @@
       "recall_hit": true,
       "hit_rank": 1,
       "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p005",
+      "query": "What documents do I need to apply for a Boston resident parking permit?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p006",
+      "query": "Where is the Boston Parking Clerk office located?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p007",
+      "query": "What are the hours of the Boston Parking Clerk office?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p008",
+      "query": "Can I use my resident parking permit on a different car?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p009",
+      "query": "What happens if I move to a new neighborhood in Boston \u2014 do I need a new permit?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p010",
+      "query": "Can I apply for a Boston parking permit online on weekends?",
+      "recall_hit": true,
+      "hit_rank": 4,
+      "reciprocal_rank": 0.25,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p011",
+      "query": "How do I get a rental car parking permit in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p012",
+      "query": "What is the BC Stadium Walkshed Permit?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "p013",
+      "query": "How do I apply for a replacement resident parking permit in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
       "domain_detected": "permits",
       "chunks_retrieved": 5
     },
@@ -116,9 +332,108 @@
       "id": "sc004",
       "query": "Does street cleaning happen on holidays in Boston?",
       "recall_hit": true,
-      "hit_rank": 2,
-      "reciprocal_rank": 0.5,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
       "domain_detected": "street_cleaning",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc005",
+      "query": "What are the street cleaning hours for overnight tickets in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "street_cleaning",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc006",
+      "query": "How much is a street cleaning ticket in Charlestown?",
+      "recall_hit": true,
+      "hit_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc007",
+      "query": "When does street cleaning run in the North End of Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc008",
+      "query": "When does street cleaning run in Beacon Hill?",
+      "recall_hit": true,
+      "hit_rank": 5,
+      "reciprocal_rank": 0.2,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc009",
+      "query": "Does street cleaning happen on the 5th week of the month?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc010",
+      "query": "If my street is cleaned every other week does street cleaning happen on the 5th week?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc011",
+      "query": "What overrides the online street cleaning schedule in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "street_cleaning",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc012",
+      "query": "Does Boston cancel overnight street cleaning on holidays?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "street_cleaning",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc013",
+      "query": "Is street cleaning suspended on Thanksgiving in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc014",
+      "query": "When does street cleaning run in the South End of Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "sc015",
+      "query": "How much is a daytime street cleaning ticket in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
       "chunks_retrieved": 5
     },
     {
@@ -131,12 +446,318 @@
       "chunks_retrieved": 5
     },
     {
+      "id": "r002",
+      "query": "What is the fine for an overnight heavy vehicle violation in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r003",
+      "query": "What are the general parking prohibitions in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r004",
+      "query": "What is required for posting temporary no parking signs in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r005",
+      "query": "Can you park within 20 feet of an intersection in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r006",
+      "query": "What happens to vehicles that are illegally parked and immobilized in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "regulations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r007",
+      "query": "Are there special parking rules near the State House in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r008",
+      "query": "What are the rules for angle parking in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "regulations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r009",
+      "query": "Can you park in a pedestrian zone in Boston?",
+      "recall_hit": false,
+      "hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "r010",
+      "query": "What are the open air parking space rules in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge001",
+      "query": "What is the difference between a Zone A and Zone B no parking fine?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge002",
+      "query": "Is the fine for parking at a Fenway event the same as a hydrant violation?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge003",
+      "query": "What is the late penalty for an overnight street cleaning ticket?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge004",
+      "query": "What is the late penalty for a loading zone violation?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge005",
+      "query": "Is street cleaning year round in Boston or only seasonal?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge006",
+      "query": "Can I renew my Boston parking permit online if it has already expired?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge007",
+      "query": "What is the fine for an electric vehicle parked in an EV spot but not actively charging?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "edge008",
+      "query": "What is the fine for parking in a taxi stand in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "oos001",
+      "query": "What are the parking rules in Cambridge MA?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "oos002",
+      "query": "How do I contest a parking ticket in court in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "oos003",
+      "query": "Where can I find parking garages near Fenway Park?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
       "id": "multi001",
       "query": "What is the fine for street cleaning and when does the season run?",
       "recall_hit": true,
       "hit_rank": 1,
       "reciprocal_rank": 1.0,
       "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "multi002",
+      "query": "How much is a hydrant ticket and what happens if I don't pay it?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "multi003",
+      "query": "How do I get a resident parking permit and how long does it take?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "permits",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "multi004",
+      "query": "Does street cleaning happen on Labor Day and if I get a ticket how much is it?",
+      "recall_hit": false,
+      "hit_rank": null,
+      "reciprocal_rank": 0.0,
+      "domain_detected": "general",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "multi005",
+      "query": "What is the difference between Zone A and Zone B double parking fines and which is more expensive?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow001",
+      "query": "Where is the Boston city tow lot located?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow002",
+      "query": "What are the hours of the Boston tow lot?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow003",
+      "query": "How much does it cost to get a towed car back in Boston?",
+      "recall_hit": true,
+      "hit_rank": 2,
+      "reciprocal_rank": 0.5,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow004",
+      "query": "What payment does the Boston tow lot accept?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow005",
+      "query": "How do I find out which company towed my car in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow006",
+      "query": "Can I get my towed car back outside of tow lot hours?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow007",
+      "query": "Can I appeal a tow in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow008",
+      "query": "What happens if my car is towed for unpaid parking tickets in Boston?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "violations",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow009",
+      "query": "How do I sign up for Boston towing alerts?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
+      "chunks_retrieved": 5
+    },
+    {
+      "id": "tow010",
+      "query": "What is the storage fee at the Boston tow lot?",
+      "recall_hit": true,
+      "hit_rank": 1,
+      "reciprocal_rank": 1.0,
+      "domain_detected": "towing",
       "chunks_retrieved": 5
     }
   ]

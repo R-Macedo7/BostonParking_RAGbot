@@ -14,7 +14,7 @@ class QueryIntent:
     domain_filter: Optional[str]   # chromadb 'where' filter if applicable
     is_multi_part: bool             # should query decomposer run?
     detected_street: Optional[str]  # street name if found in query
-    query_type: str                 # "violation" | "permit" | "street_cleaning" | "regulation" | "general"
+    query_type: str                 # "violation" | "permit" | "street_cleaning" | "regulation" | "towing" | "general"
 
 
 # Keywords that strongly signal a domain
@@ -22,7 +22,7 @@ VIOLATION_KEYWORDS = {
     "ticket", "fine", "violation", "citation", "towed", "boot",
     "hydrant", "crosswalk", "sidewalk", "double park", "meter",
     "handicap", "fire lane", "bus stop", "bike lane", "loading zone",
-    "penalty", "unpaid", "overdue", "late fee", "appeal",
+    "penalty", "unpaid", "overdue", "late fee",
 }
 
 PERMIT_KEYWORDS = {
@@ -44,6 +44,14 @@ REGULATION_KEYWORDS = {
     "angle parking", "one-way", "intersection", "curb", "loading",
     "valet", "snow emergency", "weather emergency", "residential area",
     "ban", "restrict", "restriction",
+}
+
+TOWING_KEYWORDS = {
+    "tow", "towed", "towing", "impound", "impounded", "tow lot",
+    "tow fee", "tow company", "tow line", "frontage road",
+    "car towed", "vehicle towed", "get my car back", "retrieve",
+    "storage fee", "abandoned vehicle", "tow alert", "200 frontage",
+    "booted", "immobilized", "immobilization", "appeal a tow",
 }
 
 
@@ -70,6 +78,7 @@ def classify_query(query: str) -> QueryIntent:
     permit_score = sum(1 for kw in PERMIT_KEYWORDS if kw in q_lower)
     cleaning_score = sum(1 for kw in STREET_CLEANING_KEYWORDS if kw in q_lower)
     regulation_score = sum(1 for kw in REGULATION_KEYWORDS if kw in q_lower)
+    towing_score = sum(1 for kw in TOWING_KEYWORDS if kw in q_lower)
 
     # Boost regulation score for commercial vehicle + overnight combos
     if "commercial" in q_lower and "overnight" in q_lower:
@@ -77,11 +86,20 @@ def classify_query(query: str) -> QueryIntent:
     if "commercial" in q_lower and ("residential" in q_lower or "area" in q_lower):
         regulation_score += 2
 
+    # Boost towing score for strong signals
+    if "tow" in q_lower and ("where" in q_lower or "how" in q_lower or "find" in q_lower):
+        towing_score += 2
+    if "200 frontage" in q_lower or "tow lot" in q_lower:
+        towing_score += 3
+    if "tow" in q_lower and "appeal" in q_lower:
+        towing_score += 3
+
     scores = {
         "violations": violation_score,
         "permits": permit_score,
         "street_cleaning": cleaning_score,
         "regulations": regulation_score,
+        "towing": towing_score,
     }
 
     max_score = max(scores.values())
@@ -105,6 +123,7 @@ def classify_query(query: str) -> QueryIntent:
             "permits": "permits",
             "street_cleaning": "street_cleaning",
             "regulations": "regulations",
+            "towing": "towing",
         }
         domain_filter = domain_map[best_domain]
         query_type = best_domain

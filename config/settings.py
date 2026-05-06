@@ -79,4 +79,28 @@ SOURCES = {
         "domain": "regulations",
         "refresh_days": 365,
     },
+    "towing_guide": {
+        "url": "https://www.boston.gov/departments/transportation/how-get-your-towed-car-back",
+        "raw_file": "towing_guide.html",
+        "processed_file": "towing_guide.json",
+        "chunks_file": "towing_chunks.json",
+        "domain": "towing",
+        "refresh_days": 90,
+    },
+    "towing_companies": {
+        "url": "https://www.boston.gov/departments/transportation/towing-companies-boston",
+        "raw_file": "towing_companies.html",
+        "processed_file": "towing_companies.json",
+        "chunks_file": None,
+        "domain": "towing",
+        "refresh_days": 90,
+    },
+    "towing_alerts": {
+        "url": "https://www.boston.gov/departments/transportation/towing-alerts-common-questions",
+        "raw_file": "towing_alerts.html",
+        "processed_file": "towing_alerts.json",
+        "chunks_file": None,
+        "domain": "towing",
+        "refresh_days": 180,
+    },
 }
